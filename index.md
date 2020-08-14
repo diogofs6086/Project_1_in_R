@@ -1,22 +1,9 @@
 ---
-output:
-  pdf_document: default
-  html_document: default
----
-% !TEX encoding = UTF-8 Unicode
-
----
 title: "Predictions whether a user will download an app after clicking a mobile app advertisement"
 author: "Diogo F. dos Santos"
 date: "August 9th, 2020"
 output: pdf_document
 ---
-
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 
 #### PART ONE ####
 
