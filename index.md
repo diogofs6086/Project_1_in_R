@@ -1,9 +1,8 @@
----
+
 # Predictions whether a user will download an app after clicking a mobile app advertisement
 <center> <h2>Diogo F. dos Santos</h2> </center>
 date: "August 9th, 2020"
 output: pdf_document
----
 
 #### PART ONE ####
 
