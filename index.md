@@ -66,7 +66,7 @@ train_set <- read.csv(file = 'train_sample.csv', header = T)
 test_set <- fread(file = 'train.csv', header = T, nrows = 1e7)
 ```
 
-``` {r analysis1}
+``` analysis1
 ########## Exploratory data analysis ##########
 
 # Missing values
@@ -112,7 +112,7 @@ head(rev(sort(table(test_set$ip)))) # Waw!!! It has many ip repetitions.
                                     # of repetitions.
 ```
 
-``` {r analysis2}
+``` analysis2
 # Duplicated ips
 dupl_ips_train <- train_set[duplicated(train_set$ip), 1]
 length(dupl_ips_train)
@@ -287,7 +287,7 @@ train_set %>%
 # dim(train_set)
 ```
 
-``` {r analysis3}
+``` analysis3
 # Hour of the day that the app was downloaded
 hist(train_set$attributed_hour[train_set$attributed_day == 7], 
      col = rgb(1,0,0,0.5), breaks = 24,
@@ -495,7 +495,7 @@ ls()
 gc()
 ```
 
-``` {r model1}
+``` model1
 ################################################################################
 ################################################################################
 ################################################################################
@@ -536,7 +536,7 @@ gc()
 ################################################################################
 ```
 
-``` {r model2}
+``` model2
 # logistic regression model with the most significant variables
 model2 <- glm(is_attributed ~ repetitions + device_fac + os_fac, 
               data = train_set1, 
@@ -575,7 +575,7 @@ detach(package:ROCR)
 ################################################################################
 ```
 
-``` {r model3}
+``` model3
 # KSVM model with rbf kernel
 library(kernlab)
 model3 <- ksvm(is_attributed ~ repetitions + app_fac + 
@@ -604,7 +604,7 @@ gc()
 ################################################################################
 ```
 
-``` {r model4}
+``` model4
 # KSVM model with rbf kernel and the most significant variables
 model4 <- ksvm(is_attributed ~ repetitions + device_fac + os_fac,
                data = train_set1, 
@@ -629,7 +629,7 @@ gc()
 ################################################################################
 ```
 
-``` {r model5}
+``` model5
 # KSVM model with vanilladot Linear kernel
 model5 <- ksvm(is_attributed ~ repetitions + app_fac + 
                  device_fac + os_fac + channel_fac, 
@@ -654,7 +654,7 @@ gc()
 ################################################################################
 ```
 
-``` {r model6}
+``` model6
 # KSVM model with vanilladot Linear kernel and the most significant variables
 model6 <- ksvm(is_attributed ~ repetitions + device_fac + os_fac,
                data = train_set1, 
@@ -679,7 +679,7 @@ detach(package:kernlab)
 ################################################################################
 ```
 
-``` {r model7}
+``` model7
 # SVM model with radial kernel
 library(e1071)
 model7 <- svm(is_attributed ~ repetitions + app_fac + 
@@ -705,7 +705,7 @@ gc()
 ################################################################################
 ```
 
-``` {r model8}
+``` model8
 # SVM model with radial kernel and the most significant variables
 model8 <- svm(is_attributed ~ repetitions + device_fac + os_fac, 
               data = train_set1, 
@@ -729,7 +729,7 @@ gc()
 ################################################################################
 ```
 
-``` {r model9}
+``` model9
 # SVM model with linear kernel
 model9 <- svm(is_attributed ~ repetitions + app_fac + 
                 device_fac + os_fac + channel_fac, 
@@ -755,7 +755,7 @@ gc()
 ################################################################################
 ```
 
-``` {r model10}
+``` model10
 # SVM model with linear kernel and the most significant variables
 model10 <- svm(is_attributed ~ repetitions + device_fac + os_fac, 
               data = train_set1, 
@@ -781,7 +781,7 @@ detach(package:e1071)
 ################################################################################
 ```
 
-``` {r model11}
+``` model11
 # Regression Trees model
 library(rpart.plot)
 model11 <- rpart(is_attributed ~ repetitions + app_fac + 
@@ -806,7 +806,7 @@ gc()
 ################################################################################
 ```
 
-``` {r model12}
+``` model12
 # Evaluation of the most important features for the model
 model12 <- train(is_attributed ~ repetitions + app_fac + 
                    device_fac + os_fac + channel_fac, 
@@ -838,7 +838,7 @@ detach(package:rpart.plot)
 ################################################################################
 ```
 
-``` {r model13}
+``` model13
 # Another Regression Trees model
 library(C50)
 model13 <- C5.0(is_attributed ~ repetitions_fac + app_fac + 
@@ -866,7 +866,7 @@ gc()
 ################################################################################
 ```
 
-``` {r model14}
+``` model14
 # Another Regression Trees model with the most significant variables
 model14 <- C5.0(is_attributed ~ repetitions + app_fac + 
                   device_fac + channel_fac, 
@@ -894,7 +894,7 @@ detach(package:C50)
 ################################################################################
 ```
 
-``` {r model15a}
+``` model15a
 # Random Forest model
 library(randomForest)
 library(ggplot2)
@@ -933,7 +933,7 @@ gc()
 ################################################################################
 ```
 
-``` {r model15b}
+``` model15b
 # Reducing the quantity of not downloaded to balance the train target feature
 train_set1 <- downSample(x = train_set %>% select(-is_attributed),
                          y = train_set$is_attributed, yname = 'is_attributed')
@@ -965,7 +965,7 @@ gc()
 ################################################################################
 ```
 
-``` {r model15c}
+``` model15c
 # Increasing minor target class
 train_set1 <- upSample(x = train_set %>% select(-is_attributed),
                          y = train_set$is_attributed, yname = 'is_attributed')
@@ -996,7 +996,7 @@ gc()
 ################################################################################
 ```
 
-``` {r model15d}
+``` model15d
 # Balancing the target class
 library(DMwR)
 train_set1 <- train_set %>% 
@@ -1031,7 +1031,7 @@ detach(package:DMwR)
 ################################################################################
 ```
 
-``` {r model15e}
+``` model15e
 # Balancing the target class
 library(ROSE)
 train_set1 <- train_set %>% 
