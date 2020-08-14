@@ -56,7 +56,7 @@ library(knitr)
 library(rmarkdown)
 ```
 
-``` {r reading_files}
+```
 # Read the data sets
 train_set <- read.csv(file = 'train_sample.csv', header = T)
 #test_set <- fread(file = 'test.csv', header = T)
