@@ -36,7 +36,7 @@ due to my notebook capacity. In the fourth part, the trained model was applied
 to the provided test dataset, test.csv. Afterward, the predicted results were 
 matched with the click_id to produce the submission file.
 
-``` {r packages}
+``` packages
 # Removes all existing objects and packages from the current workspace
 # rm(list = ls())
 # Working directory 
@@ -56,7 +56,7 @@ library(knitr)
 library(rmarkdown)
 ```
 
-``` {reading_files}
+``` reading_files
 # Read the data sets
 train_set <- read.csv(file = 'train_sample.csv', header = T)
 #test_set <- fread(file = 'test.csv', header = T)
