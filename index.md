@@ -1,22 +1,22 @@
 
 # Predictions whether a user will download an app after clicking a mobile app advertisement
-<center> <h2>Diogo F. dos Santos</h2> </center>
-date: "August 9th, 2020"
-output: pdf_document
+<center> <h3>Diogo F. dos Santos</h3> </center>
+<center><h4>August 9th, 2020</h4></center>
 
-#### PART ONE ####
+## PART ONE
 
-Data fields
-Each row of the training data contains a click record, with the following features.
+### Data fields
 
-ip: ip address of click.
-app: app id for marketing.
-device: device type id of user mobile phone (e.g., iphone 6 plus, iphone 7, huawei mate 7, etc.)
-os: os version id of user mobile phone
-channel: channel id of mobile ad publisher
-click_time: timestamp of click (UTC)
-attributed_time: if user download the app for after clicking an ad, this is the time of the app download
-is_attributed: the target that is to be predicted, indicating the app was downloaded
+Each row of the training data contains a click record, with the following features:
+
+* ip: ip address of click.
+* app: app id for marketing.
+* device: device type id of user mobile phone (e.g., iphone 6 plus, iphone 7, huawei mate 7, etc.)
+* os: os version id of user mobile phone
+* channel: channel id of mobile ad publisher
+* click_time: timestamp of click (UTC)
+* attributed_time: if user download the app for after clicking an ad, this is the time of the app download
+* is_attributed: the target that is to be predicted, indicating the app was downloaded
 Note that ip, app, device, os, and channel are encoded.
 
 Problem: Predict the is_attributed features
