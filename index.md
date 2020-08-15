@@ -1,5 +1,5 @@
 
-# Predictions whether a user will download an app after clicking a mobile app advertisement
+# Predictions whether a user will download an app after clicking a mobile app advertisement in R
 <center> <h3>Diogo F. dos Santos</h3> </center>
 <center><h4>August 9th, 2020</h4></center>
 
@@ -21,6 +21,7 @@ Note that ip, app, device, os, and channel are encoded.
 
 Problem: Predict the is_attributed features
 Data set site: https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/data
+Language: R
 
 The solution to this problem was divided into four parts. The first part is 
 in this script. It deals with the data munging and the testing of many machine 
@@ -36,7 +37,7 @@ due to my notebook capacity. In the fourth part, the trained model was applied
 to the provided test dataset, test.csv. Afterward, the predicted results were 
 matched with the click_id to produce the submission file.
 
-``` packages
+``` r
 # Removes all existing objects and packages from the current workspace
 # rm(list = ls())
 # Working directory 
@@ -56,7 +57,7 @@ library(knitr)
 library(rmarkdown)
 ```
 
-``` reading_files
+``` r
 # Read the data sets
 train_set <- read.csv(file = 'train_sample.csv', header = T)
 #test_set <- fread(file = 'test.csv', header = T)
@@ -188,7 +189,7 @@ head(rev(sort(table(test_set$ip))))
                                     # of repetitions.
 ```
 
-``` analysis2
+``` r
 # Duplicated ips
 dupl_ips_train <- train_set[duplicated(train_set$ip), 1]
 length(dupl_ips_train)
@@ -332,7 +333,7 @@ df_prop
 ## 23           6  4913   99.98   1     0.02
 ```
 
-``` plot2
+``` r
 # Scatter plot of the yes/no downloading app and the number of ips repetitions
 brks <- cut(df_prop$repetitions, breaks = c(0, 5, 10, 100, 700))
 ggplot(data = df_prop) +
@@ -347,7 +348,7 @@ ggplot(data = df_prop) +
 ```
  
   
-``` plot2
+``` r
 # Scatter plot of the yes/no downloading app and the number of ips repetitions
 ggplot(data = df_prop) +
   geom_point(aes(repetitions, yes_prop, size = yes_prop), alpha = 0.8) +
@@ -442,7 +443,7 @@ train_set %>%
 # dim(train_set)
 ```
 
-``` analysis3
+``` r
 # Hour of the day that the app was downloaded
 hist(train_set$attributed_hour[train_set$attributed_day == 7], 
      col = rgb(1,0,0,0.5), breaks = 24,
@@ -650,7 +651,7 @@ ls()
 gc()
 ```
 
-``` model1
+``` r
 ################################################################################
 ################################################################################
 ################################################################################
@@ -691,7 +692,7 @@ gc()
 ################################################################################
 ```
 
-``` model2
+``` r
 # logistic regression model with the most significant variables
 model2 <- glm(is_attributed ~ repetitions + device_fac + os_fac, 
               data = train_set1, 
@@ -730,7 +731,7 @@ detach(package:ROCR)
 ################################################################################
 ```
 
-``` model3
+``` r
 # KSVM model with rbf kernel
 library(kernlab)
 model3 <- ksvm(is_attributed ~ repetitions + app_fac + 
@@ -759,7 +760,7 @@ gc()
 ################################################################################
 ```
 
-``` model4
+``` r
 # KSVM model with rbf kernel and the most significant variables
 model4 <- ksvm(is_attributed ~ repetitions + device_fac + os_fac,
                data = train_set1, 
@@ -784,7 +785,7 @@ gc()
 ################################################################################
 ```
 
-``` model5
+``` r
 # KSVM model with vanilladot Linear kernel
 model5 <- ksvm(is_attributed ~ repetitions + app_fac + 
                  device_fac + os_fac + channel_fac, 
@@ -809,7 +810,7 @@ gc()
 ################################################################################
 ```
 
-``` model6
+``` r
 # KSVM model with vanilladot Linear kernel and the most significant variables
 model6 <- ksvm(is_attributed ~ repetitions + device_fac + os_fac,
                data = train_set1, 
@@ -834,7 +835,7 @@ detach(package:kernlab)
 ################################################################################
 ```
 
-``` model7
+``` r
 # SVM model with radial kernel
 library(e1071)
 model7 <- svm(is_attributed ~ repetitions + app_fac + 
@@ -860,7 +861,7 @@ gc()
 ################################################################################
 ```
 
-``` model8
+``` r
 # SVM model with radial kernel and the most significant variables
 model8 <- svm(is_attributed ~ repetitions + device_fac + os_fac, 
               data = train_set1, 
@@ -884,7 +885,7 @@ gc()
 ################################################################################
 ```
 
-``` model9
+``` r
 # SVM model with linear kernel
 model9 <- svm(is_attributed ~ repetitions + app_fac + 
                 device_fac + os_fac + channel_fac, 
@@ -910,7 +911,7 @@ gc()
 ################################################################################
 ```
 
-``` model10
+``` r
 # SVM model with linear kernel and the most significant variables
 model10 <- svm(is_attributed ~ repetitions + device_fac + os_fac, 
               data = train_set1, 
@@ -936,7 +937,7 @@ detach(package:e1071)
 ################################################################################
 ```
 
-``` model11
+``` r
 # Regression Trees model
 library(rpart.plot)
 model11 <- rpart(is_attributed ~ repetitions + app_fac + 
@@ -961,7 +962,7 @@ gc()
 ################################################################################
 ```
 
-``` model12
+``` r
 # Evaluation of the most important features for the model
 model12 <- train(is_attributed ~ repetitions + app_fac + 
                    device_fac + os_fac + channel_fac, 
@@ -993,7 +994,7 @@ detach(package:rpart.plot)
 ################################################################################
 ```
 
-``` model13
+``` r
 # Another Regression Trees model
 library(C50)
 model13 <- C5.0(is_attributed ~ repetitions_fac + app_fac + 
@@ -1021,7 +1022,7 @@ gc()
 ################################################################################
 ```
 
-``` model14
+``` r
 # Another Regression Trees model with the most significant variables
 model14 <- C5.0(is_attributed ~ repetitions + app_fac + 
                   device_fac + channel_fac, 
@@ -1049,7 +1050,7 @@ detach(package:C50)
 ################################################################################
 ```
 
-``` model15a
+``` r
 # Random Forest model
 library(randomForest)
 library(ggplot2)
@@ -1088,7 +1089,7 @@ gc()
 ################################################################################
 ```
 
-``` model15b
+``` r
 # Reducing the quantity of not downloaded to balance the train target feature
 train_set1 <- downSample(x = train_set %>% select(-is_attributed),
                          y = train_set$is_attributed, yname = 'is_attributed')
@@ -1120,7 +1121,7 @@ gc()
 ################################################################################
 ```
 
-``` model15c
+``` r
 # Increasing minor target class
 train_set1 <- upSample(x = train_set %>% select(-is_attributed),
                          y = train_set$is_attributed, yname = 'is_attributed')
@@ -1151,7 +1152,7 @@ gc()
 ################################################################################
 ```
 
-``` model15d
+``` r
 # Balancing the target class
 library(DMwR)
 train_set1 <- train_set %>% 
@@ -1186,7 +1187,7 @@ detach(package:DMwR)
 ################################################################################
 ```
 
-``` model15e
+``` r
 # Balancing the target class
 library(ROSE)
 train_set1 <- train_set %>% 
