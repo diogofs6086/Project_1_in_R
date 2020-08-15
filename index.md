@@ -67,7 +67,7 @@ test_set <- fread(file = 'train.csv', header = T, nrows = 1e7)
 ```
 ### Exploratory data analysis
 
-``` analysis1
+``` r
 # Missing values
 
 any(is.na(train_set))
