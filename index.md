@@ -388,29 +388,49 @@ test_set$repetitions_fac <- cut(test_set$repetitions,
 # The click_time feature of the train data set
 train_set$click_time <- as.Date(train_set$click_time, format = '%Y-%m-%d')
 unique(months(train_set$click_time))      # only in november
+## [1] "novembro"
+
 unique(year(train_set$click_time))        # only in 2017
+## [1] 2017
+
 unique(day(train_set$click_time))         # the days are between 6 and 9
-unique(weekdays(train_set$click_time))    # days 6 = Monday, 7 = Tuesday,
+## [1] 7 9 8 6
+
+unique(weekdays(train_set$click_time))
+## [1] "terça"   "quinta"  "quarta"  "segunda"
+                                          # days 6 = Monday, 7 = Tuesday,
                                           #      8 = Wednesday, and 9 = Thursday
 
 # The click_time feature of the test data set
 test_set$click_time <- as.Date(test_set$click_time, format = '%Y-%m-%d')
 unique(months(test_set$click_time))       # only in november
+## [1] "novembro"
+
 unique(year(test_set$click_time))         # only in 2017
+## [1] 2017
+
 unique(day(test_set$click_time))          # only the day 10th
+## [1] 6 7
+
 unique(weekdays(test_set$click_time))     # day  10 = friday
+## [1] "segunda" "terça"
 
 # New feature containing the day of the click_time
 train_set$click_day <- day(train_set$click_time)
 test_set$click_day <- day(test_set$click_time)
+```
 
+``` r
 # train click_day plot
 ggplot(train_set, aes(click_day)) +
   geom_histogram(binwidth = 1, fill = 'green', col = 'black', alpha = 0.6) +
   theme_bw()
                                           # maybe the day 6 has only the 
                                           # partial data
+```
+<img src="images/click_day.png">
 
+``` r
 # Number of clicks in function of the day (train)
 train_set %>%
   count(click_day)
