@@ -434,6 +434,11 @@ ggplot(train_set, aes(click_day)) +
 # Number of clicks in function of the day (train)
 train_set %>%
   count(click_day)
+##   click_day     n
+## 1         6  5011
+## 2         7 32393
+## 3         8 34035
+## 4         9 28561
 
 # The train attributed_time feature. It is not in the test data set.
 train_set$attributed_time <- ymd_hms(train_set$attributed_time)
@@ -442,11 +447,16 @@ train_set$attributed_time <- ymd_hms(train_set$attributed_time)
 train_set$attributed_day <- day(train_set$attributed_time)
 train_set$attributed_hour <- hour(train_set$attributed_time) + 
   ifelse(minute(train_set$attributed_time) >= 30, 1, 0)
+```
 
+``` r
 ggplot(train_set, aes(attributed_day, attributed_hour, 
                       fill = cut(attributed_hour, breaks = c(0,12,18,24)))) +
   geom_bar(stat = "identity", alpha = 0.6)
+```
+<img src="images/attr_day_hour.png">
 
+``` r
 # Number of clicks in function of the day (train)
 train_set %>%
   count(attributed_day)
@@ -461,6 +471,12 @@ train_set %>%
                                           # This data set dos not have much
                                           # positive targets. I will not
                                           # delete the day 6 and 9.
+##   attributed_day     n
+## 1              6     4
+## 2              7    76
+## 3              8    85
+## 4              9    62
+## 5             NA 99773
 
 # Erase the day 6 and 9 to have two entire days (train)
 # train_set <- train_set[train_set$click_day != 6 & train_set$click_day != 9, ]
@@ -476,13 +492,19 @@ hist(train_set$attributed_hour[train_set$attributed_day == 8],
      col = rgb(0,0,1,0.5), breaks = 24, add = T)
 legend(x = "topright", legend = c('Day 7','Day 8'), 
        col = c(rgb(1,0,0,0.5), rgb(0,0,1,0.5)), pch = 15)
+```
+<img src="images/attr_hour1.png">
 
+``` r
 hist(train_set$attributed_hour, 
      breaks = 24, main = 'Histogram of the app downloaded per hour in the two days', 
      xlab = 'Hour')
                                           # Strangely, the number of downloads
                                           # has a great decrease after 16 hours
+```
+<img src="images/attr_hour2.png">
 
+``` r
 # app feature
 sort(unique(train_set$app))
 sort(unique(test_set$app))
