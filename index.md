@@ -2,7 +2,7 @@
 # Predictions whether a user will download an app after clicking a mobile app advertisement in R
 <center> <h3>Diogo F. dos Santos</h3> </center>
 <center><h4>August 9th, 2020</h4></center>
-<img src="df_prop.png">
+
 ## PART ONE
 
 ### Data fields
@@ -346,6 +346,7 @@ ggplot(data = df_prop) +
   ggtitle('The app was downloaded') +
   theme_linedraw()
 ```
+<img src="images/df_prop1.png">
  
   
 ``` r
@@ -359,7 +360,10 @@ ggplot(data = df_prop) +
   theme_linedraw()
                                     # the yes proportions seems to behave like
                                     # a sinusoid
+```
+<img src="images/df_prop2.png">
 
+``` r
 # Iserting anoter columns according to the yes_prop values
 gt <- df_prop$repetitions[df_prop$yes_prop > 0.4]
 
