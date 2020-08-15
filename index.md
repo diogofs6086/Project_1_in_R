@@ -70,8 +70,9 @@ test_set <- fread(file = 'train.csv', header = T, nrows = 1e7)
 ### Missing values
 ``` a1
 any(is.na(train_set))
+## [1] FALSE
 ```
-[1] FALSE
+
 
 ´´´ a2
 any(is.na(test_set))
