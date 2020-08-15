@@ -67,8 +67,9 @@ test_set <- fread(file = 'train.csv', header = T, nrows = 1e7)
 ```
 ### Exploratory data analysis
 
-### Missing values
-``` a1
+``` analysis1
+# Missing values
+
 any(is.na(train_set))
 ## [1] FALSE
 
@@ -191,15 +192,27 @@ head(rev(sort(table(test_set$ip))))
 # Duplicated ips
 dupl_ips_train <- train_set[duplicated(train_set$ip), 1]
 length(dupl_ips_train)
+## [1] 65143
+
 length(unique(dupl_ips_train))
+## [1] 17434
+
 round(prop.table(table(train_set$is_attributed[train_set$ip %in% 
                                 unique(dupl_ips_train)])) * 100, 2)
+##     0     1 
+## 99.91  0.09 
 
 dupl_ips_test <- train_set[duplicated(test_set$ip), 1]
 length(dupl_ips_test)
+## [1] 9931260
+
 length(unique(dupl_ips_test))
+## [1] 32051
+
 round(prop.table(table(train_set$is_attributed[train_set$ip %in% 
                                 unique(dupl_ips_test)])) * 100, 2)
+##    0    1 
+## 99.8  0.2 
 
 # Repeated ips in order
 n_dupl_ips_train <- train_set %>%
@@ -207,22 +220,54 @@ n_dupl_ips_train <- train_set %>%
   arrange(desc(n))
 
 head(n_dupl_ips_train)
+##       ip   n
+## 1   5348 669
+## 2   5314 616
+## 3  73487 439
+## 4  73516 399
+## 5  53454 280
+## 6 114276 219
 
 n_dupl_ips_test <- test_set %>%
   count(ip, wt = n() ) %>%
   arrange(desc(n))
 
 head(n_dupl_ips_test)
+##        ip     n
+## 1:  73516 51711
+## 2:  73487 51215
+## 3:   5314 35073
+## 4:   5348 35004
+## 5:  53454 25381
+## 6: 105560 23289
 
 # Verifyind the total of lines
 sum(n_dupl_ips_train$n)
+## [1] 100000
+
 sum(n_dupl_ips_test$n)
+## [1] 10000000
 
 # Number of duplicate ips column
 train_set <- left_join(train_set, n_dupl_ips_train, by = 'ip')
 head(train_set)
+##       ip app device os channel          click_time attributed_time is_attributed   n
+## 1  87540  12      1 13     497 2017-11-07 09:30:38                             0   8
+## 2 105560  25      1 17     259 2017-11-07 13:40:27                             0 149
+## 3 101424  12      1 19     212 2017-11-07 18:05:24                             0   2
+## 4  94584  13      1 13     477 2017-11-07 04:58:08                             0   3
+## 5  68413  12      1  1     178 2017-11-09 09:00:09                             0   4
+## 6  93663   3      1 17     115 2017-11-09 01:22:13                             0   2
+
 test_set <- left_join(test_set, n_dupl_ips_test, by = 'ip')
 head(test_set)
+##        ip app device os channel          click_time attributed_time is_attributed    n
+## 1:  83230   3      1 13     379 2017-11-06 14:32:21                             0 1327
+## 2:  17357   3      1 19     379 2017-11-06 14:33:34                             0 1057
+## 3:  35810   3      1 13     379 2017-11-06 14:34:12                             0  449
+## 4:  45745  14      1 13     478 2017-11-06 14:34:52                             0 9395
+## 5: 161007   3      1 13     379 2017-11-06 14:35:08                             0  184
+## 6:  18787   3      1 16     379 2017-11-06 14:36:26                             0  205
 
 # Rename the n columns
 names(train_set)[9] <- 'repetitions'
