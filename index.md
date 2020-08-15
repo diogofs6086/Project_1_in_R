@@ -272,9 +272,14 @@ head(test_set)
 # Rename the n columns
 names(train_set)[9] <- 'repetitions'
 labels(train_set)[[2]]
+## [1] "ip"              "app"             "device"          "os"              "channel"        
+## [6] "click_time"      "attributed_time" "is_attributed"   "repetitions"    
+
 names(test_set)[9] <- 'repetitions'
 # names(test_set)[8] <- 'repetitions'
 labels(test_set)[[2]]
+## [1] "ip"              "app"             "device"          "os"              "channel"        
+## [6] "click_time"      "attributed_time" "is_attributed"   "repetitions"  
 
 # The number of ips repeated depending on the number of repetitions
 c = 1
@@ -293,6 +298,7 @@ for (i in values) {
 
 # Verifying the number rows of  train data set is correct
 sum(df$no, df$yes)
+## [1] 100000
 
 # Filter and sorting df in relation to the proportion of yes to the app
 df_prop <- df %>% 
@@ -300,7 +306,33 @@ df_prop <- df %>%
   arrange(desc(yes_prop))
 
 df_prop
+##    repetitions    no no_prop yes yes_prop
+## 1           41    40   97.56   1     2.44
+## 2            1 17273   99.14 150     0.86
+## 3          137   136   99.27   1     0.73
+## 4           70   139   99.29   1     0.71
+## 5           42   167   99.40   1     0.60
+## 6          616   613   99.51   3     0.49
+## 7          669   666   99.55   3     0.45
+## 8           18   377   99.74   1     0.26
+## 9           12  1891   99.74   5     0.26
+## 10          19   512   99.81   1     0.19
+## 11           2 14153   99.82  25     0.18
+## 12          14  1244   99.84   2     0.16
+## 13          16   671   99.85   1     0.15
+## 14           5  5996   99.85   9     0.15
+## 15           8  3701   99.92   3     0.08
+## 16          13  1481   99.93   1     0.07
+## 17           9  3265   99.94   2     0.06
+## 18           4  7923   99.94   5     0.06
+## 19           3 10826   99.94   7     0.06
+## 20          11  2199   99.95   1     0.05
+## 21           7  4128   99.95   2     0.05
+## 22          10  2649   99.96   1     0.04
+## 23           6  4913   99.98   1     0.02
+```
 
+``` plot2
 # Scatter plot of the yes/no downloading app and the number of ips repetitions
 brks <- cut(df_prop$repetitions, breaks = c(0, 5, 10, 100, 700))
 ggplot(data = df_prop) +
@@ -312,7 +344,10 @@ ggplot(data = df_prop) +
   coord_trans(x = 'log', y = 'log') +
   ggtitle('The app was downloaded') +
   theme_linedraw()
+```
+ 
   
+``` plot2
 # Scatter plot of the yes/no downloading app and the number of ips repetitions
 ggplot(data = df_prop) +
   geom_point(aes(repetitions, yes_prop, size = yes_prop), alpha = 0.8) +
