@@ -71,27 +71,65 @@ test_set <- fread(file = 'train.csv', header = T, nrows = 1e7)
 ``` a1
 any(is.na(train_set))
 ## [1] FALSE
-```
 
-
-´´´ a2
 any(is.na(test_set))
+## [1] FALSE
 
 # Overview
 dim(train_set)
+## [1] 100000   8
+
 head(train_set)
+##       ip app device os channel          click_time attributed_time is_attributed
+## 1  87540  12      1 13     497 2017-11-07 09:30:38                             0
+## 2 105560  25      1 17     259 2017-11-07 13:40:27                             0
+## 3 101424  12      1 19     212 2017-11-07 18:05:24                             0
+## 4  94584  13      1 13     477 2017-11-07 04:58:08                             0
+## 5  68413  12      1  1     178 2017-11-09 09:00:09                             0
+## 6  93663   3      1 17     115 2017-11-09 01:22:13                             0
+
 str(train_set)
+## 'data.frame':
+## 100000 obs. of 8 variables:
+## $ ip             : int 87540 105560 101424 94584 68413 93663 17059 121505 192967 143636 ...
+## $ app            : int 12 25 12 13 12 3 1 9 2 3 ...
+## $ device         : int 1 1 1 1 1 1 1 1 2 1 ...
+## $ os             : int 13 17 19 13 1 17 17 25 22 19 ...
+## $ channel        : int 497 259 212 477 178 115 135 442 364 135 ...
+## $ click_time     : chr "2017-11-07 09:30:38" "2017-11-07 13:40:27" "2017-11-07 18:05:24" "2017-11-0
+## $ attributed_time: chr "" "" "" "" ...
+## $ is_attributed  : int 0 0 0 0 0 0 0 0 0 0 ...
 
 dim(test_set)
-head(test_set)
-str(test_set)
+## [1] 10000000    8
 
+head(test_set)
+##        ip app device os channel          click_time attributed_time is_attributed
+## 1:  83230   3      1 13     379 2017-11-06 14:32:21                             0
+## 2:  17357   3      1 19     379 2017-11-06 14:33:34                             0
+## 3:  35810   3      1 13     379 2017-11-06 14:34:12                             0
+## 4:  45745  14      1 13     478 2017-11-06 14:34:52                             0
+## 5: 161007   3      1 13     379 2017-11-06 14:35:08                             0
+## 6:  18787   3      1 16     379 2017-11-06 14:36:26                             0
+
+str(test_set)
+Classes ‘data.table’ and 'data.frame':	10000000 obs. of  8 variables:
+## $ ip             : int  83230 17357 35810 45745 161007 18787 103022 114221 165970 74544 ...
+## $ app            : int  3 3 3 14 3 3 3 3 3 64 ...
+## $ device         : int  1 1 1 1 1 1 1 1 1 1 ...
+## $ os             : int  13 19 13 13 13 16 23 19 13 22 ...
+## $ channel        : int  379 379 379 478 379 379 379 379 379 459 ...
+## $ click_time     : chr  "2017-11-06 14:32:21" "2017-11-06 14:33:34" "2017-11-06 14:34:12" "2017-11-06 14:34:52" ...
+## $ attributed_time: chr  "" "" "" "" ...
+## $ is_attributed  : int  0 0 0 0 0 0 0 0 0 0 ...
 
 # The target variable is categorical
 train_set$is_attributed <- as.factor(train_set$is_attributed)
 test_set$is_attributed <- as.factor(test_set$is_attributed)
 table(train_set$is_attributed)
 # table(test_set$is_attributed)
+##     0     1 
+## 99773   227 
                                         # It has other categorical ip, variables,
                                         # like the app, device, os, and channel, 
                                         # but it seems to be not practical to 
@@ -99,13 +137,46 @@ table(train_set$is_attributed)
 
 # Train dataset summary
 summary(train_set)
+##       ip              app             device              os            channel     
+## Min.   :     9   Min.   :  1.00   Min.   :   0.00   Min.   :  0.00   Min.   :  3.0  
+## 1st Qu.: 40552   1st Qu.:  3.00   1st Qu.:   1.00   1st Qu.: 13.00   1st Qu.:145.0  
+## Median : 79827   Median : 12.00   Median :   1.00   Median : 18.00   Median :258.0  
+## Mean   : 91256   Mean   : 12.05   Mean   :  21.77   Mean   : 22.82   Mean   :268.8  
+## 3rd Qu.:118252   3rd Qu.: 15.00   3rd Qu.:   1.00   3rd Qu.: 19.00   3rd Qu.:379.0  
+## Max.   :364757   Max.   :551.00   Max.   :3867.00   Max.   :866.00   Max.   :498.0  
+##  click_time        attributed_time    is_attributed
+## Length:100000      Length:100000      0:99773      
+## Class :character   Class :character   1:  227      
+## Mode  :character   Mode  :character   
+ 
 summary(test_set)
+##       ip              app             device              os           channel     
+## Min.   :     9   Min.   :  0.00   Min.   :   0.00   Min.   :  0.0   Min.   :  0.0  
+## 1st Qu.: 42164   1st Qu.:  3.00   1st Qu.:   1.00   1st Qu.: 13.0   1st Qu.:134.0  
+## Median : 81973   Median : 12.00   Median :   1.00   Median : 18.0   Median :237.0  
+## Mean   : 87332   Mean   : 12.86   Mean   :  33.04   Mean   : 24.6   Mean   :252.7  
+## 3rd Qu.:121187   3rd Qu.: 15.00   3rd Qu.:   1.00   3rd Qu.: 19.0   3rd Qu.:377.0  
+## Max.   :212774   Max.   :675.00   Max.   :3545.00   Max.   :745.0   Max.   :498.0  
+##  click_time        attributed_time    is_attributed
+## Length:10000000    Length:10000000    0:9981283    
+## Class :character   Class :character   1:  18717    
+## Mode  :character   Mode  :character  
 
 # Unique values of the ip feature
 length(unique(train_set$ip))        # 34857 values in 100000 of the total.
+## [1] 34857
+
 length(unique(test_set$ip))         # 93936 values in 18790469 of the total.
+## [1] 68740
+
 head(rev(sort(table(train_set$ip))))
-head(rev(sort(table(test_set$ip)))) # Waw!!! It has many ip repetitions.
+##  5348   5314  73487  73516  53454 114276 
+##   669    616    439    399    280    219 
+
+head(rev(sort(table(test_set$ip))))
+## 73516  73487   5314   5348  53454 105560 
+## 51711  51215  35073  35004  25381  23289 
+                                    # Waw!!! It has many ip repetitions.
                                     # I thought it had had much less than that.
                                     # Some ips have so many repetitions that
                                     # I think I will have to make classes to
