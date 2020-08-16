@@ -600,31 +600,78 @@ legend(x = "topright", legend = c('Train data set','Test data set'),
 a <- train_set %>%
   count(device, sort = T)
 head(a)
+##   device     n
+## 1      1 94338
+## 2      2  4345
+## 3      0   541
+## 4   3032   371
+## 5   3543   151
+## 6   3866    93
 
 b <- test_set %>%
   count(device, sort = T)
 head(b)
+##    device       n
+## 1:      1 9381146
+## 2:      2  456617
+## 3:   3032  104393
+## 4:      0   46476
+## 5:     59    1618
+## 6:     40     462
 
 # Type 1 device proportion
-( a[1,2]/sum(a) )                       # 58% of all devices are of type 1
-( b[1,2]/sum(b) )                       # 81% of all devices are of type 1
+( a[1,2]/sum(a) )                       # ~58% of all devices are of type 1
+## [1] 0.5842556
+
+( b[1,2]/sum(b) )                       # ~86% of all devices are of type 1
+##            n
+## 1: 0.8574944
 
 # Making two classes of devices: one for type 1 and the other for the others
 class_device <- function(x) {ifelse(x == 1, 1, 2)} 
 
 train_set$device_fac <- as.factor(class_device(train_set$device))
 levels(train_set$device_fac)
+## [1] "1" "2"
 
 test_set$device_fac <- as.factor(class_device(test_set$device))
 levels(test_set$device_fac)
+## [1] "1" "2"
 
 # OS feature
 sort(unique(train_set$os))
+##   [1]   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21  22
+##  [24]  23  24  25  26  27  28  29  30  31  32  34  35  36  37  38  39  40  41  42  43  44  45  46
+##  [47]  47  48  49  50  52  53  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71
+##  [70]  73  74  76  77  78  79  80  81  83  84  85  87  88  90  92  96  97  98  99 100 102 106 107
+##  [93] 108 109 110 111 112 113 114 116 117 118 127 129 132 133 135 137 138 142 151 152 153 155 168
+## [116] 172 174 178 184 185 192 193 196 198 199 207 607 748 836 866
+
 sort(unique(test_set$os))
+##   [1]   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21  22
+##  [24]  23  24  25  26  27  28  29  30  31  32  34  35  36  37  38  39  40  41  42  43  44  45  46
+##  [47]  47  48  49  50  52  53  54  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70
+##  [70]  71  72  73  74  75  76  77  78  79  80  81  83  84  85  86  87  88  89  90  91  92  93  94
+##  [93]  95  96  97  98  99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 117 118
+## [116] 119 120 123 124 125 126 127 128 129 130 132 133 134 135 136 137 138 140 141 142 143 145 146
+## [139] 147 148 149 150 151 152 153 155 156 158 159 160 161 162 164 168 169 171 172 173 174 175 177
+## [162] 178 183 184 185 188 190 192 193 196 197 198 207 208 209 213 214 215 216 217 219 223 226 228
+## [185] 229 231 234 236 237 241 243 244 245 248 250 251 252 254 255 256 260 261 262 265 268 272 274
+## [208] 277 280 284 286 294 297 300 302 305 306 325 326 329 336 338 342 346 355 380 404 407 408 411
+## [231] 414 421 438 465 505 508 512 514 531 541 552 559 566 573 584 602 603 607 610 612 616 617 619
+## [254] 620 622 630 636 640 645 647 649 651 653 656 657 669 672 675 681 684 686 687 688 690 692 700
+## [277] 701 702 704 705 707 712 715 716 726 736 737 739 742 743 744 745
 
 summary(train_set$os)
-summary(test_set$os)
+##   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.00   13.00   18.00   22.82   19.00  866.00 
 
+summary(test_set$os)
+##   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.0    13.0    18.0    24.6    19.0   745.0 
+```
+
+``` r
 # histograms
 hist(train_set$os, freq = F, xlim = c(0,800), ylim = c(0, 0.07), breaks = 100, 
      col = rgb(1,0,0,0.5), main = 'OS histograms', xlab = 'OS id')
@@ -632,7 +679,10 @@ hist(test_set$os, freq = F, xlim = c(0,800), breaks = 50,
      col = rgb(0,0,1,0.5), add = T)
 legend(x = "topright", legend = c('Train data set','Test data set'), 
        col = c(rgb(1,0,0,0.5), rgb(0,0,1,0.5)), pch = 15)
+```
+<img src="images/os.png">
 
+``` r
 # smaller domain
 hist(train_set$os, freq = F, xlim = c(0, 100), ylim = c(0, 0.07), breaks = 100, 
      col = rgb(1,0,0,0.5), main = 'OS histograms', xlab = 'OS id')
@@ -640,7 +690,10 @@ hist(test_set$os, freq = F, xlim = c(0,100), breaks = 50,
      col = rgb(0,0,1,0.5), add = T)
 legend(x = "topright", legend = c('Train data set','Test data set'), 
        col = c(rgb(1,0,0,0.5), rgb(0,0,1,0.5)), pch = 15)
+```
+#<img src="images/device.png">
 
+``` r
 # Countings
 a <- train_set %>%
   count(os, sort = T)
