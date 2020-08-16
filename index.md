@@ -919,12 +919,12 @@ gc()
 ## Vcells 91570932 698.7  284414278 2170.0 284386939 2169.8
 ```
 
-``` r
-################################################################################
-################################################################################
-################################################################################
+### Models
 
-# logistic regression model
+
+#### Logistic regression model
+
+``` r
 labels(test_set)[[2]]
 
 model1 <- glm(is_attributed ~ repetitions_fac + app_fac + 
@@ -954,14 +954,10 @@ par(mfrow = c(1,1))
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
-
-################################################################################
-################################################################################
-################################################################################
 ```
+#### Logistic regression model with the most significant variables
 
 ``` r
-# logistic regression model with the most significant variables
 model2 <- glm(is_attributed ~ repetitions + device_fac + os_fac, 
               data = train_set1, 
               family = "binomial")
