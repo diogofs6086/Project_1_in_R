@@ -698,14 +698,32 @@ legend(x = "topright", legend = c('Train data set','Test data set'),
 a <- train_set %>%
   count(os, sort = T)
 head(a)
+##   os     n
+## 1 19 23870
+## 2 13 21223
+## 3 17  5232
+## 4 18  4830
+## 5 22  4039
+## 6 10  2816
 
 b <- test_set %>%
   count(os, sort = T)
 head(b)
+##    os       n
+## 1: 19 2410148
+## 2: 13 2199778
+## 3: 17  531695
+## 4: 18  483602
+## 5: 22  365576
+## 6: 10  285907
 
 # Type 19 and 13 os proportion
 ( (a[1,2] + a[2,2]) / sum(a) )
+## [1] 0.4005952
+
 ( (b[1,2] + b[2,2]) / sum(b) )
+##            n
+## 1: 0.4577447
                                         # Type 19 and 13 os represent almost
                                         # 40% of the systems
 
@@ -716,19 +734,51 @@ class_os <- function(x) {
   else if (x > 19) {4}
   else {1}
 }
+```
 
+``` r
 train_set$os_fac <- as.factor(sapply(train_set$os, class_os))
 plot(train_set$os_fac, xlab = 'OS classes (train data set)', ylab = 'Frequency')
+```
+<img src="images/os_fac_train.png">
+
+``` r
 test_set$os_fac <- as.factor(sapply(test_set$os, class_os))
 plot(test_set$os_fac, xlab = 'OS classes (test data set)', ylab = 'Frequency')
+```
+<img src="images/os_fac_test.png">
 
+``` r
 # Channel feature
 sort(unique(train_set$channel))
+##   [1]   3   4   5  13  15  17  18  19  21  22  24  30 101 105 107 108 110 111 113 114 115 116 118
+##  [24] 120 121 122 123 124 125 126 127 128 130 134 135 137 138 140 145 150 153 160 171 173 174 178
+##  [47] 182 203 205 208 210 211 212 213 215 219 224 232 234 236 237 242 243 244 245 253 258 259 261
+##  [70] 262 265 266 268 272 274 277 278 280 282 315 317 319 320 322 325 326 328 330 332 333 334 340
+##  [93] 341 343 347 349 353 356 360 361 364 371 373 376 377 379 386 391 400 401 402 404 406 409 410
+## [116] 411 412 416 417 419 420 421 424 430 435 439 442 445 446 448 449 450 451 452 453 455 456 457
+## [139] 459 460 463 465 466 467 469 474 477 478 479 480 481 483 484 486 487 488 489 490 496 497 498
+
 sort(unique(test_set$channel))
+##   [1]   0   3   4   5  13  15  17  18  19  21  22  24  30 101 105 107 108 110 111 113 114 115 116
+##  [24] 118 120 121 122 123 124 125 126 128 129 130 134 135 137 138 140 142 145 150 153 160 171 173
+##  [47] 174 178 181 182 203 205 208 210 211 212 213 215 219 222 223 224 225 232 234 236 237 238 242
+##  [70] 243 244 245 251 253 258 259 261 262 265 266 268 272 274 277 278 280 281 282 311 315 317 319
+##  [93] 320 325 326 328 330 332 333 334 340 341 343 347 349 352 353 356 360 361 364 371 373 376 377
+## [116] 379 386 391 400 401 402 406 407 409 410 411 412 414 416 417 419 420 421 424 430 435 439 442
+## [139] 445 446 449 450 451 452 453 456 457 458 459 460 463 465 466 467 469 471 477 478 479 480 481
+## [162] 483 484 486 487 488 489 496 497 498
 
 summary(train_set$channel)
+##   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    3.0   145.0   258.0   268.8   379.0   498.0 
+    
 summary(test_set$channel)
+##   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.0   134.0   237.0   252.7   377.0   498.0 
+```
 
+``` r
 # histograms
 hist(train_set$channel, freq = F, ylim = c(0, 0.01), breaks = 20, 
      col = rgb(1,0,0,0.5), main = 'Channel histograms', xlab = 'Channel id')
@@ -736,20 +786,38 @@ hist(test_set$channel, freq = F, breaks = 20,
      col = rgb(0,0,1,0.5), add = T)
 legend(x = "topright", legend = c('Train data set','Test data set'), 
        col = c(rgb(1,0,0,0.5), rgb(0,0,1,0.5)), pch = 15)
+```
+<img src="images/channel.png">
 
+``` r
 # Countings
 a <- train_set %>%
   count(channel, sort = T)
 head(a)
+##   channel    n
+## 1     280 8114
+## 2     245 4802
+## 3     107 4543
+## 4     477 3960
+## 5     134 3224
+## 6     259 3130
 
 b <- test_set %>%
   count(channel, sort = T)
 head(b)
+##    channel      n
+## 1:     245 793105
+## 2:     134 630888
+## 3:     259 469845
+## 4:     477 412559
+## 5:     121 402226
+## 6:     107 388035
 
 #  Balancing the four channel classes
 div_channel <- bin_data(c(train_set$channel, test_set$channel), 
                         bins = 4, binType = "quantile")
 levels(div_channel)
+## [1] "[0, 134)"   "[134, 242)" "[242, 377)" "[377, 498]"
 
 train_set$channel_fac <- cut(train_set$channel, 
                              breaks = c(0, 135, 236, 401, nrow(train_set)),
@@ -758,58 +826,97 @@ train_set$channel_fac <- cut(train_set$channel,
 test_set$channel_fac <- cut(test_set$channel, 
                             breaks = c(0, 135, 236, 401, nrow(test_set)),
                             right = F, labels = c(1, 2, 3, 4))
+```
 
+``` r
 plot(train_set$channel_fac, xlab = 'Channel id class (train data set)', 
      ylab = 'Frequency')
+```
+<img src="images/channel_fac_train.png">
 
+``` r
 plot(test_set$channel_fac, xlab = 'Channel id class (test data set)', 
      ylab = 'Frequency')
+```
+<img src="images/channel_fac_test.png">
 
+``` r
 # Features that does not contain missing values
 dim(train_set)
+## [1] 100000     18
+
 any(is.na(train_set[,1:6]))
+## [1] FALSE
+
 any(is.na(train_set[,8:11]))
+## [1] FALSE
+
 any(is.na(train_set[,14:17]))
+## [1] TRUE
 
 # Dealing with the features with missing values
 any(is.na(train_set[,7]))
+[1] TRUE
+
 labels(train_set)[[2]][7]
+[1] "attributed_time"
+
 head(unique(train_set$attributed_time))
+## [1] NA                        "2017-11-08 02:22:38 UTC" "2017-11-08 06:10:37 UTC"
+## [4] "2017-11-07 11:59:05 UTC" "2017-11-09 11:52:01 UTC" "2017-11-08 01:55:02 UTC"
                                         # This features will not be utilized
 
 any(is.na(train_set[,12]))
+## [1] FALSE
+
 labels(train_set)[[2]][12]
+## [1] "click_day"
+
 unique(train_set$attributed_day)
+## [1] NA  8  7  9  6
                                         # This features will not be utilized
 
 any(is.na(train_set[,13]))
-labels(train_set)[[2]][13]
-unique(train_set$attributed_hour)
-                                        # This features will not be utilized
+## [1] TRUE
 
+labels(train_set)[[2]][13]
+## [1] "attributed_day"
+
+unique(train_set$attributed_hour)
+## [1] NA  2  6 12 13 23  9  5 10 20  7  0  4  8 15 11  1 14 17  3 16 22 24 21
+                                        # This features will not be utilized
 
 # Reducing the quantity of not downloaded to balance the train target feature
 n <- nrow(train_set[train_set$is_attributed == 1, ])
 n
+## [1] 227
 
 train_no <- train_set %>%
   filter(is_attributed == 0) %>%
   slice_sample(n = n, replace = F)
 nrow(train_no)
+## [1] 227
 
 train_yes <- train_set %>%
   filter(is_attributed == 1)
 nrow(train_yes)
+## [1] 227
 
 train_set1 <- rbind(train_no, train_yes)
 train_set1 <- train_set1 %>% 
   slice_sample(n = nrow(train_set1), replace = F)
 nrow(train_set1)/2
+## [1] 227
 
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 ls()
+## [1] "test_set"   "train_set"  "train_set1"
+
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  2773749 148.2   13395887  715.5  20931072 1117.9
+## Vcells 91570932 698.7  284414278 2170.0 284386939 2169.8
 ```
 
 ``` r
