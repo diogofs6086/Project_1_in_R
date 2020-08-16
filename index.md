@@ -20,7 +20,9 @@ Each row of the training data contains a click record, with the following featur
 Note that ip, app, device, os, and channel are encoded.
 
 Problem: Predict the is_attributed features
+
 Data set site: https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/data
+
 Language: R
 
 The solution to this problem was divided into four parts. The first part is 
@@ -507,21 +509,53 @@ hist(train_set$attributed_hour,
 ``` r
 # app feature
 sort(unique(train_set$app))
+##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21  22  23
+##  [24]  24  25  26  27  28  29  30  31  32  33  34  35  36  37  38  39  42  43  44  45  46  47  48
+##  [47]  49  50  52  53  54  55  56  58  59  60  61  62  64  65  66  67  68  70  71  72  74  75  76
+##  [70]  78  79  80  81  82  83  84  85  86  87  88  91  92  93  94  95  96  97  99 100 101 103 104
+##  [93] 105 107 108 109 110 112 115 116 117 118 119 121 122 123 124 125 133 134 137 139 145 146 148
+## [116] 149 150 151 158 160 161 163 165 168 170 171 176 181 183 190 192 202 204 208 215 216 232 233
+## [139] 261 266 267 268 271 273 293 302 310 315 347 363 372 394 398 407 425 474 486 536 538 548 551
+
 sort(unique(test_set$app))
+##   [1]   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21  22
+##  [24]  23  24  25  26  27  28  29  32  33  34  35  36  37  38  39  40  42  43  44  45  46  47  48
+##  [47]  49  50  51  52  53  54  55  56  57  58  59  60  61  62  64  65  66  67  68  69  70  71  72
+##  [70]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90  91  93  94  95  96
+##  [93]  97  98  99 100 101 102 103 104 105 107 108 109 110 111 112 114 115 116 118 119 120 121 122
+## [116] 123 124 125 126 127 128 130 132 133 134 136 137 140 141 142 143 145 146 148 149 150 151 152
+## [139] 153 154 155 158 159 160 161 162 163 165 166 167 168 169 170 171 172 173 175 176 177 181 182
+## [162] 183 184 185 186 188 190 192 193 194 195 196 197 198 199 202 203 205 206 207 208 209 210 212
+## [185] 213 215 216 217 218 220 222 223 224 226 229 230 231 232 233 236 237 238 239 240 241 242 244
+## [208] 246 247 249 250 251 255 256 257 258 259 261 262 263 265 266 267 268 269 272 273 276 277 278
+## [231] 279 280 281 283 284 286 288 289 290 291 292 294 295 299 302 303 304 305 310 312 315 317 318
+## [254] 319 320 322 324 325 326 328 329 333 334 336 346 347 349 352 354 355 361 362 363 365 366 367
+## [277] 371 372 376 379 381 383 386 394 395 398 399 407 419 425 429 433 436 443 446 448 469 474 480
+## [300] 481 484 489 496 502 525 530 531 536 537 538 540 541 549 551 553 555 556 557 561 563 564 565
+## [323] 569 576 610 612 619 625 629 645 651 675
 
 div_app<- bin_data(c(train_set$app, test_set$app), bins = 4, binType = "quantile")
 levels(div_app)
+## [1] "[0, 3)"    "[3, 12)"   "[12, 15)"  "[15, 675]"
 
 train_set$app_fac <- cut(train_set$app, breaks = c(0, 3, 12, 18, nrow(train_set)), 
                      right = F, labels = c(1, 2, 3, 4))
 
 test_set$app_fac <- cut(test_set$app, breaks = c(0, 3, 12, 18, nrow(test_set)), 
                      right = F, labels = c(1, 2, 3, 4))
+```
 
-
+``` r
 plot(train_set$app_fac, xlab = 'App id class (train data set)', ylab = 'Frequency')
-plot(test_set$app_fac, xlab = 'App id class (test data set)', ylab = 'Frequency')
+```
+<img src="images/app_fac_train.png">
 
+``` r
+plot(test_set$app_fac, xlab = 'App id class (test data set)', ylab = 'Frequency')
+```
+<img src="images/app_fac_test.png">
+
+``` r
 # device feature
 sort(unique(train_set$device))
 sort(unique(test_set$device))
