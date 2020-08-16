@@ -680,7 +680,7 @@ hist(test_set$os, freq = F, xlim = c(0,800), breaks = 50,
 legend(x = "topright", legend = c('Train data set','Test data set'), 
        col = c(rgb(1,0,0,0.5), rgb(0,0,1,0.5)), pch = 15)
 ```
-<img src="images/os.png">
+<img src="images/os1.png">
 
 ``` r
 # smaller domain
@@ -691,7 +691,7 @@ hist(test_set$os, freq = F, xlim = c(0,100), breaks = 50,
 legend(x = "topright", legend = c('Train data set','Test data set'), 
        col = c(rgb(1,0,0,0.5), rgb(0,0,1,0.5)), pch = 15)
 ```
-#<img src="images/device.png">
+<img src="images/os2.png">
 
 ``` r
 # Countings
