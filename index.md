@@ -955,6 +955,7 @@ par(mfrow = c(1,1))
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
 ```
+
 #### Logistic regression model with the most significant variables
 
 ``` r
@@ -989,14 +990,11 @@ par(mfrow = c(1,1))
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
 detach(package:ROCR) 
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### KSVM model with rbf kernel
+
 ``` r
-# KSVM model with rbf kernel
 library(kernlab)
 model3 <- ksvm(is_attributed ~ repetitions + app_fac + 
                 device_fac + os_fac + channel_fac, 
@@ -1018,14 +1016,11 @@ confusionMatrix(predictions3,
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### KSVM model with rbf kernel and the most significant variables
+
 ``` r
-# KSVM model with rbf kernel and the most significant variables
 model4 <- ksvm(is_attributed ~ repetitions + device_fac + os_fac,
                data = train_set1, 
                kernel = 'rbf')
@@ -1043,14 +1038,11 @@ confusionMatrix(predictions4,
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### KSVM model with vanilladot Linear kernel
+
 ``` r
-# KSVM model with vanilladot Linear kernel
 model5 <- ksvm(is_attributed ~ repetitions + app_fac + 
                  device_fac + os_fac + channel_fac, 
                data = train_set1, 
@@ -1068,14 +1060,11 @@ confusionMatrix(predictions5,
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### KSVM model with vanilladot Linear kernel and the most significant variables
+
 ``` r
-# KSVM model with vanilladot Linear kernel and the most significant variables
 model6 <- ksvm(is_attributed ~ repetitions + device_fac + os_fac,
                data = train_set1, 
                kernel = 'vanilla')
@@ -1093,14 +1082,11 @@ confusionMatrix(predictions6,
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
 detach(package:kernlab)
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### SVM model with radial kernel
+
 ``` r
-# SVM model with radial kernel
 library(e1071)
 model7 <- svm(is_attributed ~ repetitions + app_fac + 
                  device_fac + os_fac + channel_fac, 
@@ -1119,14 +1105,11 @@ confusionMatrix(predictions7,
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### SVM model with radial kernel and the most significant variables
+
 ``` r
-# SVM model with radial kernel and the most significant variables
 model8 <- svm(is_attributed ~ repetitions + device_fac + os_fac, 
               data = train_set1, 
               kernel = 'radial')
@@ -1143,14 +1126,11 @@ confusionMatrix(predictions8,
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### SVM model with linear kernel
+
 ``` r
-# SVM model with linear kernel
 model9 <- svm(is_attributed ~ repetitions + app_fac + 
                 device_fac + os_fac + channel_fac, 
               data = train_set1, 
@@ -1169,14 +1149,11 @@ confusionMatrix(predictions9,
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### SVM model with linear kernel and the most significant variables
+
 ``` r
-# SVM model with linear kernel and the most significant variables
 model10 <- svm(is_attributed ~ repetitions + device_fac + os_fac, 
               data = train_set1, 
               kernel = 'linear',
@@ -1195,14 +1172,11 @@ confusionMatrix(predictions10,
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
 detach(package:e1071)
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### Regression Trees model
+
 ``` r
-# Regression Trees model
 library(rpart.plot)
 model11 <- rpart(is_attributed ~ repetitions + app_fac + 
                    device_fac + os_fac + channel_fac, 
@@ -1220,14 +1194,11 @@ confusionMatrix(predictions11,
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### Evaluation of the most important features for the model
+
 ``` r
-# Evaluation of the most important features for the model
 model12 <- train(is_attributed ~ repetitions + app_fac + 
                    device_fac + os_fac + channel_fac, 
                  data = train_set1,
@@ -1252,14 +1223,11 @@ confusionMatrix(predictions12,
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
 detach(package:rpart.plot)
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### Another Regression Trees model
+
 ``` r
-# Another Regression Trees model
 library(C50)
 model13 <- C5.0(is_attributed ~ repetitions_fac + app_fac + 
                   device_fac + os_fac + channel_fac, 
@@ -1280,14 +1248,11 @@ confusionMatrix(predictions13,
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### Another Regression Trees model with the most significant variables
+
 ``` r
-# Another Regression Trees model with the most significant variables
 model14 <- C5.0(is_attributed ~ repetitions + app_fac + 
                   device_fac + channel_fac, 
                 data = train_set1, 
@@ -1308,14 +1273,11 @@ confusionMatrix(predictions14,
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
 detach(package:C50)
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### Random Forest model
+
 ``` r
-# Random Forest model
 library(randomForest)
 library(ggplot2)
 # Feature importances
@@ -1347,14 +1309,11 @@ confusionMatrix(predictions15,
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### Reducing the quantity of not downloaded to balance the train target feature
+
 ``` r
-# Reducing the quantity of not downloaded to balance the train target feature
 train_set1 <- downSample(x = train_set %>% select(-is_attributed),
                          y = train_set$is_attributed, yname = 'is_attributed')
 table(train_set1$is_attributed) 
@@ -1379,14 +1338,11 @@ confusionMatrix(predictions15,
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'test_set')))
 gc()
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### Increasing minor target class
+
 ``` r
-# Increasing minor target class
 train_set1 <- upSample(x = train_set %>% select(-is_attributed),
                          y = train_set$is_attributed, yname = 'is_attributed')
 table(train_set1$is_attributed) 
@@ -1410,14 +1366,11 @@ confusionMatrix(predictions15,
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'test_set')))
 gc()
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### Balancing the target class
+
 ``` r
-# Balancing the target class
 library(DMwR)
 train_set1 <- train_set %>% 
   select(is_attributed, repetitions_fac, app, channel, app_fac)
@@ -1445,14 +1398,11 @@ confusionMatrix(predictions15,
 rm(list = setdiff(ls(), c('train_set', 'test_set')))
 gc()
 detach(package:DMwR)
-
-################################################################################
-################################################################################
-################################################################################
 ```
 
+#### Balancing the target class
+
 ``` r
-# Balancing the target class
 library(ROSE)
 train_set1 <- train_set %>% 
   select(is_attributed, repetitions_fac, app, channel, app_fac)
@@ -1479,8 +1429,6 @@ confusionMatrix(predictions15,
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'test_set')))
 gc()
-
-################################################################################
 ```
-# Continue on part two, 
-#                  filename project_click_fraud_2_3_4_markdown_final_model.pdf
+
+#### Continue on part two, filename project_click_fraud_2_3_4_markdown_final_model.pdf
