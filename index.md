@@ -4,7 +4,7 @@
 <center><h4>August 9th, 2020</h4></center>
 
 ## PART ONE
-[ssssssssss](Project_click_fraud_1_web.md)
+[ssssssssssXXXXXXXXXXXXXXXXX](Project_click_fraud_1_web.md)
 ### Data fields
 
 Each row of the training data contains a click record, with the following features:
@@ -926,6 +926,9 @@ gc()
 
 ``` r
 labels(test_set)[[2]]
+##  [1] "ip"              "app"             "device"          "os"              "channel"        
+##  [6] "click_time"      "attributed_time" "is_attributed"   "repetitions"     "repetitions_fac"
+## [11] "click_day"       "app_fac"         "device_fac"      "os_fac"          "channel_fac"  
 
 model1 <- glm(is_attributed ~ repetitions_fac + app_fac + 
                 device_fac + os_fac + channel_fac, 
@@ -934,6 +937,38 @@ model1 <- glm(is_attributed ~ repetitions_fac + app_fac +
 
 # Summary of the model
 summary(model1)
+## Call:
+## glm(formula = is_attributed ~ repetitions_fac + app_fac + device_fac + 
+##     os_fac + channel_fac, family = "binomial", data = train_set1)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.6723  -0.5629   0.1194   0.6837   2.9808  
+## 
+## Coefficients:
+##                  Estimate Std. Error z value Pr(>|z|)    
+## (Intercept)      -16.8529   908.3027  -0.019  0.98520    
+## repetitions_fac2  -1.3263     0.3062  -4.332 1.48e-05 ***
+## app_fac2          16.4615   908.3027   0.018  0.98554    
+## app_fac3          13.9896   908.3029   0.015  0.98771    
+## app_fac4          18.1139   908.3027   0.020  0.98409    
+## device_fac2        1.2064     0.4038   2.987  0.00281 ** 
+## os_fac2            0.4697     0.4018   1.169  0.24234    
+## os_fac3            0.5876     0.3694   1.590  0.11176    
+## os_fac4            1.0746     0.3312   3.244  0.00118 ** 
+## channel_fac2      -0.5142     0.3512  -1.464  0.14319    
+## channel_fac3      -0.7106     0.3569  -1.991  0.04648 *  
+## channel_fac4      -1.0198     0.4053  -2.516  0.01185 *  
+## ---
+## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 629.38  on 453  degrees of freedom
+## Residual deviance: 375.36  on 442  degrees of freedom
+## AIC: 399.36
+## 
+## Number of Fisher Scoring iterations: 16
 
 # Predictions
 predictions1 <- predict(model1, test_set, type="response")
@@ -942,6 +977,32 @@ predictions1 <- round(predictions1)
 # Evaluation
 confusionMatrix(as.factor(predictions1), 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## ***Prediction       0       1
+##          0 8697564    7841
+##          1 1283719   10876***
+##                                           
+##                Accuracy : 0.8708          
+##                  95% CI : (0.8706, 0.8711)
+##     No Information Rate : 0.9981          
+##     P-Value [Acc > NIR] : 1               
+##                                           
+##                   Kappa : 0.0129          
+##                                           
+## Mcnemar's Test P-Value : <2e-16          
+##                                           
+##             Sensitivity : 0.581076        
+##             Specificity : 0.871387        
+##          Pos Pred Value : 0.008401        
+##          Neg Pred Value : 0.999099        
+##              Prevalence : 0.001872        
+##          Detection Rate : 0.001088        
+##    Detection Prevalence : 0.129460        
+##       ***Balanced Accuracy : 0.726232***
+##                                           
+##        'Positive' Class : 1     
 
 # ROC curve
 predictions1_roc <- prediction(predictions1, test_set$is_attributed)
