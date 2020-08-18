@@ -40,15 +40,14 @@ to the provided test dataset, test.csv. Afterward, the predicted results were
 matched with the click_id to produce the submission file.
 
 ``` r
-> sample **sample** sample
 # Removes all existing objects and packages from the current workspace
-> rm(list = ls())
+rm(list = ls())
 # Working directory 
-> setwd("~/Documents/learning_Data_Science/R_learnings/Project_1_in_R")
-> getwd()
+# setwd("~/Documents/learning_Data_Science/R_learnings/Project_1_in_R")
+# getwd()
 
 # Packages
-> library(dplyr)
+library(dplyr)
 library(lubridate)
 library(ggplot2)
 library(ggthemes)
@@ -981,7 +980,7 @@ confusionMatrix(as.factor(predictions1),
 ## Confusion Matrix and Statistics
 ## 
 ##           Reference
-## ***Prediction       0       1
+## Prediction       0       1
 ##          0 8697564    7841
 ##          1 1283719   10876***
 ##                                           
@@ -1001,21 +1000,31 @@ confusionMatrix(as.factor(predictions1),
 ##              Prevalence : 0.001872        
 ##          Detection Rate : 0.001088        
 ##    Detection Prevalence : 0.129460        
-##       ***Balanced Accuracy : 0.726232***
+##       Balanced Accuracy : 0.726232
 ##                                           
 ##        'Positive' Class : 1     
 
 # ROC curve
 predictions1_roc <- prediction(predictions1, test_set$is_attributed)
 source("plot_utils.R") 
+``
+
+``` r
 par(mfrow = c(1,2))
 plot.roc.curve(predictions1_roc, title.text = "Curva ROC")
 plot.pr.curve(predictions1_roc, title.text = "Curva Precision/Recall")
 par(mfrow = c(1,1))
+```
 
+<img src="images/roc_model1.png">
+
+``` r
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  2617366 139.8   15670224  836.9  21334598 1139.4
+## Vcells 95255761 726.8  298277460 2275.7 466058531 3555.8
 ```
 
 #### Logistic regression model with the most significant variables
