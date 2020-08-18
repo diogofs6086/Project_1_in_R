@@ -42,13 +42,13 @@ matched with the click_id to produce the submission file.
 ``` r
 > sample **sample** sample
 # Removes all existing objects and packages from the current workspace
-# rm(list = ls())
+> rm(list = ls())
 # Working directory 
-setwd("~/Documents/learning_Data_Science/R_learnings/Project_1_in_R")
-# getwd()
+> setwd("~/Documents/learning_Data_Science/R_learnings/Project_1_in_R")
+> getwd()
 
 # Packages
-library(dplyr)
+> library(dplyr)
 library(lubridate)
 library(ggplot2)
 library(ggthemes)
