@@ -40,7 +40,9 @@ to the provided test dataset, test.csv. Afterward, the predicted results were
 matched with the click_id to produce the submission file.
 
 ``` r
-> `sample`**`sample`**`sample`
+<pre>
+sample <b>sample</b> sample
+</pre>
 # Removes all existing objects and packages from the current workspace
 # rm(list = ls())
 # Working directory 
