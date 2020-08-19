@@ -1036,6 +1036,32 @@ model2 <- glm(is_attributed ~ repetitions + device_fac + os_fac,
 
 # Summary of the model
 summary(model2)
+## Call:
+## glm(formula = is_attributed ~ repetitions + device_fac + os_fac, 
+##     family = "binomial", data = train_set1)
+## 
+## Deviance Residuals: 
+##     Min       1Q   Median       3Q      Max  
+## -2.2010  -0.9890  -0.1636   1.1965   1.6394  
+## 
+## Coefficients:
+##               Estimate Std. Error z value Pr(>|z|)    
+## (Intercept) -0.5938732  0.1986416  -2.990  0.00279 ** 
+## repetitions -0.0007266  0.0011634  -0.625  0.53226    
+## device_fac2  2.3771097  0.3652051   6.509 7.57e-11 ***
+## os_fac2     -0.0214790  0.3198963  -0.067  0.94647    
+## os_fac3      0.2580455  0.2865053   0.901  0.36777    
+## os_fac4      0.5497575  0.2682331   2.050  0.04041 *  
+## ---
+## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 629.38  on 453  degrees of freedom
+## Residual deviance: 546.42  on 448  degrees of freedom
+## AIC: 558.42
+## 
+## Number of Fisher Scoring iterations: 4
 
 # Predictions
 predictions2 <- predict(model2, test_set, type="response")
@@ -1044,15 +1070,48 @@ predictions2 <- round(predictions2)
 # Evaluation
 confusionMatrix(as.factor(predictions2), 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction       0       1
+##          0 9557368   12730
+##          1  423915    5987
+##                                           
+##                Accuracy : 0.9563          
+##                  95% CI : (0.9562, 0.9565)
+##     No Information Rate : 0.9981          
+##     P-Value [Acc > NIR] : 1               
+##                                           
+##                   Kappa : 0.0232          
+##                                           
+##  Mcnemar's Test P-Value : <2e-16          
+##                                           
+##             Sensitivity : 0.3198696       
+##             Specificity : 0.9575290       
+##          Pos Pred Value : 0.0139264       
+##          Neg Pred Value : 0.9986698       
+##              Prevalence : 0.0018717       
+##          Detection Rate : 0.0005987       
+##    Detection Prevalence : 0.0429902       
+##       Balanced Accuracy : 0.6386993       
+##                                           
+##        'Positive' Class : 1   
 
 # Criando curvas ROC
 predictions2_roc <- prediction(predictions2, test_set$is_attributed)
 source("plot_utils.R") 
+```
+
+``` r
 par(mfrow = c(1,2))
 plot.roc.curve(predictions2_roc, title.text = "Curva ROC")
 plot.pr.curve(predictions2_roc, title.text = "Curva Precision/Recall")
 par(mfrow = c(1,1))
+```
 
+<img src="images/roc_model2.png">
+
+``` r
 #  Conclusion: the AUC value decrease in relation to the previous model.
 #              The AUC value is the Balanced Accuracy of the
 #              confusionMatrix results.
@@ -1060,6 +1119,10 @@ par(mfrow = c(1,1))
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  2616138 139.8   15103796  806.7  17353585  926.8
+## Vcells 95252627 726.8  286380120 2185.0 437924104 3341.1
+
 detach(package:ROCR) 
 ```
 
@@ -1074,6 +1137,8 @@ model3 <- ksvm(is_attributed ~ repetitions + app_fac +
 
 # Summary of the model
 summary(model3)
+## Length  Class   Mode 
+##      1   ksvm     S4 
 
 # Predictions
 predictions3 <- predict(model3, test_set, type="response")
@@ -1081,12 +1146,41 @@ predictions3 <- predict(model3, test_set, type="response")
 # Evaluation
 confusionMatrix(predictions3, 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction       0       1
+##          0 9011581    8829
+##          1  969702    9888
+##                                          
+##                Accuracy : 0.9021         
+##                  95% CI : (0.902, 0.9023)
+##     No Information Rate : 0.9981         
+##     P-Value [Acc > NIR] : 1              
+##                                          
+##                   Kappa : 0.0162         
+##                                          
+##  Mcnemar's Test P-Value : <2e-16         
+##                                          
+##             Sensitivity : 0.5282898      
+##             Specificity : 0.9028480      
+##          Pos Pred Value : 0.0100940      
+##          Neg Pred Value : 0.9990212      
+##              Prevalence : 0.0018717      
+##          Detection Rate : 0.0009888      
+##    Detection Prevalence : 0.0979590      
+##       Balanced Accuracy : 0.7155689      
+##                                          
+##        'Positive' Class : 1     
 
 # Conclusion: the first model is still the best one.
 
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  2908154 155.4   13181248  704.0  17353585  926.8
+## Vcells 95577073 729.2  466460729 3558.9 583075910 4448.6
 ```
 
 #### KSVM model with rbf kernel and the most significant variables
