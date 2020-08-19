@@ -1738,12 +1738,42 @@ predictions14 <- predict(model14, test_set, type="class")
 # Evaluation
 confusionMatrix(predictions14, 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction       0       1
+##          0 8114982    5462
+##          1 1866301   13255
+##                                           
+##                Accuracy : 0.8128          
+##                  95% CI : (0.8126, 0.8131)
+##     No Information Rate : 0.9981          
+##     P-Value [Acc > NIR] : 1               
+##                                           
+##                   Kappa : 0.0103          
+##                                           
+##  Mcnemar's Test P-Value : <2e-16          
+##                                           
+##             Sensitivity : 0.708180        
+##             Specificity : 0.813020        
+##          Pos Pred Value : 0.007052        
+##          Neg Pred Value : 0.999327        
+##              Prevalence : 0.001872        
+##          Detection Rate : 0.001326        
+##    Detection Prevalence : 0.187956        
+##       Balanced Accuracy : 0.760600        
+##                                           
+##        'Positive' Class : 1   
 
 # Conclusion: The previous model was better.
 
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  2981965 159.3   13397470  715.6  17506251  935.0
+## Vcells 95755678 730.6  312793960 2386.5 600626893 4582.5
+
 detach(package:C50)
 ```
 
@@ -1751,6 +1781,7 @@ detach(package:C50)
 
 ``` r
 library(randomForest)
+train_set1 <- train_set1[,-c(6,7,12,13,14)]
 library(ggplot2)
 # Feature importances
 model <- randomForest(is_attributed ~ ip + app + device + os + channel + 
