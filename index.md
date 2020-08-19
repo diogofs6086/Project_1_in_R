@@ -1007,7 +1007,7 @@ confusionMatrix(as.factor(predictions1),
 # ROC curve
 predictions1_roc <- prediction(predictions1, test_set$is_attributed)
 source("plot_utils.R") 
-``
+```
 
 ``` r
 par(mfrow = c(1,2))
