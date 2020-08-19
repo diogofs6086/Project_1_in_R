@@ -1196,6 +1196,32 @@ predictions4 <- predict(model4, test_set, type="response")
 # Evaluation
 confusionMatrix(predictions4, 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction       0       1
+##          0 9687087   13730
+##          1  294196    4987
+##                                           
+##                Accuracy : 0.9692          
+##                  95% CI : (0.9691, 0.9693)
+##     No Information Rate : 0.9981          
+##     P-Value [Acc > NIR] : 1               
+##                                           
+##                   Kappa : 0.028           
+##                                           
+##  Mcnemar's Test P-Value : <2e-16          
+##                                           
+##             Sensitivity : 0.2664423       
+##             Specificity : 0.9705252       
+##          Pos Pred Value : 0.0166687       
+##          Neg Pred Value : 0.9985847       
+##              Prevalence : 0.0018717       
+##          Detection Rate : 0.0004987       
+##    Detection Prevalence : 0.0299183       
+##       Balanced Accuracy : 0.6184838       
+##                                           
+##        'Positive' Class : 1   
 
 # Conclusion: the first model is still the best one. It is worst than the
 #             previous model.
@@ -1203,6 +1229,9 @@ confusionMatrix(predictions4,
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  2910193 155.5   16838001  899.3  17506251  935.0
+## Vcells 95599232 729.4  373168584 2847.1 583075910 4448.6
 ```
 
 #### KSVM model with vanilladot Linear kernel
@@ -1219,12 +1248,41 @@ predictions5 <- predict(model5, test_set, type="response")
 # Evaluation
 confusionMatrix(predictions5, 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction       0       1
+##          0 7683916    4700
+##          1 2297367   14017
+##                                           
+##                Accuracy : 0.7698          
+##                  95% CI : (0.7695, 0.7701)
+##     No Information Rate : 0.9981          
+##     P-Value [Acc > NIR] : 1               
+##                                           
+##                   Kappa : 0.0083          
+##                                           
+##  Mcnemar's Test P-Value : <2e-16          
+##                                           
+##             Sensitivity : 0.748891        
+##             Specificity : 0.769832        
+##          Pos Pred Value : 0.006064        
+##          Neg Pred Value : 0.999389        
+##              Prevalence : 0.001872        
+##          Detection Rate : 0.001402        
+##    Detection Prevalence : 0.231138        
+##       Balanced Accuracy : 0.759362        
+##                                           
+##        'Positive' Class : 1   
 
 # Conclusion: now this is the best model so far.
 
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  2910489 155.5   12963585  692.4  17506251  935.0
+## Vcells 95599699 729.4  358305840 2733.7 583075910 4448.6
 ```
 
 #### KSVM model with vanilladot Linear kernel and the most significant variables
@@ -1240,12 +1298,42 @@ predictions6 <- predict(model6, test_set, type="response")
 # Evaluation
 confusionMatrix(predictions6, 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction       0       1
+##          0 9368709   12437
+##          1  612574    6280
+##                                           
+##                Accuracy : 0.9375          
+##                  95% CI : (0.9373, 0.9376)
+##     No Information Rate : 0.9981          
+##     P-Value [Acc > NIR] : 1               
+##                                           
+##                   Kappa : 0.0161          
+##                                           
+##  Mcnemar's Test P-Value : <2e-16          
+##                                           
+##             Sensitivity : 0.335524        
+##             Specificity : 0.938628        
+##          Pos Pred Value : 0.010148        
+##          Neg Pred Value : 0.998674        
+##              Prevalence : 0.001872        
+##          Detection Rate : 0.000628        
+##    Detection Prevalence : 0.061885        
+##       Balanced Accuracy : 0.637076        
+##                                           
+##        'Positive' Class : 1   
 
 # Conclusion: the model 5 scores better.
 
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  2910491 155.5   12477042  666.4  17506251  935.0
+## Vcells 95599699 729.4  286644672 2187.0 583075910 4448.6
+
 detach(package:kernlab)
 ```
 
