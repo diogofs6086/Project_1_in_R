@@ -1558,12 +1558,41 @@ predictions11 <- predict(model11, test_set, type="class")
 # Evaluation
 confusionMatrix(predictions11, 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction       0       1
+##          0 9300983    9307
+##          1  680300    9410
+##                                           
+##                Accuracy : 0.931           
+##                  95% CI : (0.9309, 0.9312)
+##     No Information Rate : 0.9981          
+##     P-Value [Acc > NIR] : 1               
+##                                           
+##                   Kappa : 0.023           
+##                                           
+##  Mcnemar's Test P-Value : <2e-16          
+##                                           
+##             Sensitivity : 0.502752        
+##             Specificity : 0.931842        
+##          Pos Pred Value : 0.013643        
+##          Neg Pred Value : 0.999000        
+##              Prevalence : 0.001872        
+##          Detection Rate : 0.000941        
+##    Detection Prevalence : 0.068971        
+##       Balanced Accuracy : 0.717297        
+##                                           
+##        'Positive' Class : 1    
 
 # Conclusion: it is the best model so far.
 
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  2926389 156.3   14785270  789.7  17506251  935.0
+## Vcells 95629924 729.6  292904176 2234.7 600626893 4582.5
 ```
 
 #### Evaluation of the most important features for the model
@@ -1574,6 +1603,20 @@ model12 <- train(is_attributed ~ repetitions + app_fac +
                  data = train_set1,
                  method = 'rpart')
 varImp(model12)
+rpart variable importance
+
+             Overall
+repetitions  100.000
+app_fac4      84.275
+app_fac3      61.299
+device_fac2   46.020
+os_fac4       32.265
+app_fac2      31.523
+channel_fac3  16.082
+channel_fac4   2.357
+os_fac2        0.000
+os_fac3        0.000
+channel_fac2   0.000
 
 # Regression Trees model with the most significant variables
 model12 <- rpart(is_attributed ~ repetitions + app_fac + 
@@ -1586,12 +1629,42 @@ predictions12 <- predict(model12, test_set, type="class")
 # Evaluation
 confusionMatrix(predictions12, 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction       0       1
+##          0 9711487   11110
+##          1  269796    7607
+##                                          
+##                Accuracy : 0.9719         
+##                  95% CI : (0.9718, 0.972)
+##     No Information Rate : 0.9981         
+##     P-Value [Acc > NIR] : 1              
+##                                          
+##                   Kappa : 0.048          
+##                                          
+##  Mcnemar's Test P-Value : <2e-16         
+##                                          
+##             Sensitivity : 0.4064220      
+##             Specificity : 0.9729698      
+##          Pos Pred Value : 0.0274222      
+##          Neg Pred Value : 0.9988573      
+##              Prevalence : 0.0018717      
+##          Detection Rate : 0.0007607      
+##    Detection Prevalence : 0.0277403      
+##       Balanced Accuracy : 0.6896959      
+##                                          
+##        'Positive' Class : 1   
 
 # Conclusion: the model 11 is still the best model.
 
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  2968463 158.6   14868932  794.1  17506251  935.0
+## Vcells 95733083 730.4  281252009 2145.8 600626893 4582.5
+
 detach(package:rpart.plot)
 ```
 
@@ -1612,12 +1685,41 @@ predictions13 <- predict(model13, test_set, type="class")
 # Evaluation
 confusionMatrix(predictions13, 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction       0       1
+##          0 9680882    9862
+##          1  300401    8855
+##                                           
+##                Accuracy : 0.969           
+##                  95% CI : (0.9689, 0.9691)
+##     No Information Rate : 0.9981          
+##     P-Value [Acc > NIR] : 1               
+##                                           
+##                   Kappa : 0.0506          
+##                                           
+##  Mcnemar's Test P-Value : <2e-16          
+##                                           
+##             Sensitivity : 0.4730993       
+##             Specificity : 0.9699036       
+##          Pos Pred Value : 0.0286332       
+##          Neg Pred Value : 0.9989823       
+##              Prevalence : 0.0018717       
+##          Detection Rate : 0.0008855       
+##    Detection Prevalence : 0.0309256       
+##       Balanced Accuracy : 0.7215014       
+##                                           
+##        'Positive' Class : 1   
 
 # Conclusion: it is the best model so far.
 
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  2981950 159.3   12930518  690.6  17506251  935.0
+## Vcells 95755664 730.6  324143114 2473.1 600626893 4582.5
 ```
 
 #### Another Regression Trees model with the most significant variables
