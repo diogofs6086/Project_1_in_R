@@ -1603,20 +1603,20 @@ model12 <- train(is_attributed ~ repetitions + app_fac +
                  data = train_set1,
                  method = 'rpart')
 varImp(model12)
-rpart variable importance
-
-             Overall
-repetitions  100.000
-app_fac4      84.275
-app_fac3      61.299
-device_fac2   46.020
-os_fac4       32.265
-app_fac2      31.523
-channel_fac3  16.082
-channel_fac4   2.357
-os_fac2        0.000
-os_fac3        0.000
-channel_fac2   0.000
+## rpart variable importance
+## 
+##              Overall
+## repetitions  100.000
+## app_fac4      84.275
+## app_fac3      61.299
+## device_fac2   46.020
+## os_fac4       32.265
+## app_fac2      31.523
+## channel_fac3  16.082
+## channel_fac4   2.357
+## os_fac2        0.000
+## os_fac3        0.000
+## channel_fac2   0.000
 
 # Regression Trees model with the most significant variables
 model12 <- rpart(is_attributed ~ repetitions + app_fac + 
@@ -1782,17 +1782,19 @@ detach(package:C50)
 ``` r
 library(randomForest)
 train_set1 <- train_set1[,-c(6,7,12,13,14)]
-library(ggplot2)
+
 # Feature importances
-model <- randomForest(is_attributed ~ ip + app + device + os + channel + 
-                        repetitions + yes_prop + repetitions_fac + app_fac + 
-                        device_fac + os_fac + channel_fac, 
-                      data = train_set1, 
+model <- randomForest(is_attributed ~ .,
+                      data = train_set1,
                       ntree = 30,
                       nodesize = 1, importance = T)
 
 varImpPlot(model)
+```
 
+<img src="images/var_imp_model15.png">
+
+``` r
 # Random forest model
 model15 <- randomForest(is_attributed ~ repetitions_fac * app + 
                           channel * app_fac, 
@@ -1806,12 +1808,41 @@ predictions15 <- predict(model15, test_set, type="class")
 # Evaluation
 confusionMatrix(predictions15, 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction       0       1
+##          0 9757870    4842
+##          1  223413   13875
+##                                           
+##                Accuracy : 0.9772          
+##                  95% CI : (0.9771, 0.9773)
+##     No Information Rate : 0.9981          
+##     P-Value [Acc > NIR] : 1               
+##                                           
+##                   Kappa : 0.1053          
+##                                           
+##  Mcnemar's Test P-Value : <2e-16          
+##                                           
+##             Sensitivity : 0.741305        
+##             Specificity : 0.977617        
+##          Pos Pred Value : 0.058473        
+##          Neg Pred Value : 0.999504        
+##              Prevalence : 0.001872        
+##          Detection Rate : 0.001388        
+##    Detection Prevalence : 0.023729        
+##       Balanced Accuracy : 0.859461        
+##                                           
+##        'Positive' Class : 1  
 
 # Conclusion: This is the best model.
 
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'train_set1', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  2913615 155.7   16781470  896.3  22293634 1190.7
+## Vcells 95960667 732.2  393467817 3002.0 488306060 3725.5
 ```
 
 #### Reducing the quantity of not downloaded to balance the train target feature
