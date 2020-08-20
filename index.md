@@ -1851,6 +1851,8 @@ gc()
 train_set1 <- downSample(x = train_set %>% select(-is_attributed),
                          y = train_set$is_attributed, yname = 'is_attributed')
 table(train_set1$is_attributed) 
+  0   1 
+227 227 
 
 # Random forest model
 model15 <- randomForest(is_attributed ~ repetitions_fac * app + 
@@ -1865,6 +1867,32 @@ predictions15 <- predict(model15, test_set, type="class")
 # Evaluation
 confusionMatrix(predictions15, 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction       0       1
+##          0 9526008    4601
+##          1  455275   14116
+##                                           
+##                Accuracy : 0.954           
+##                  95% CI : (0.9539, 0.9541)
+##     No Information Rate : 0.9981          
+##     P-Value [Acc > NIR] : 1               
+##                                           
+##                   Kappa : 0.0544          
+##                                           
+##  Mcnemar's Test P-Value : <2e-16          
+##                                           
+##             Sensitivity : 0.754181        
+##             Specificity : 0.954387        
+##          Pos Pred Value : 0.030073        
+##          Neg Pred Value : 0.999517        
+##              Prevalence : 0.001872        
+##          Detection Rate : 0.001412        
+##    Detection Prevalence : 0.046939        
+##       Balanced Accuracy : 0.854284        
+##                                           
+##        'Positive' Class : 1  
 
 # Conclusion: Reducing the major target class by the downSample method did not 
 #             change the results.
@@ -1872,6 +1900,9 @@ confusionMatrix(predictions15,
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  2926822 156.4   16142212  862.1  22293634 1190.7
+## Vcells 95987904 732.4  309323325 2360.0 488306060 3725.5
 ```
 
 #### Increasing minor target class
@@ -1880,6 +1911,8 @@ gc()
 train_set1 <- upSample(x = train_set %>% select(-is_attributed),
                          y = train_set$is_attributed, yname = 'is_attributed')
 table(train_set1$is_attributed) 
+##     0     1 
+## 99773 99773 
 
 # Random forest model
 model15 <- randomForest(is_attributed ~ repetitions_fac * app + 
@@ -1894,12 +1927,41 @@ predictions15 <- predict(model15, test_set, type="class")
 # Evaluation
 confusionMatrix(predictions15, 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction       0       1
+##          0 9873020    7659
+##          1  108263   11058
+##                                           
+##                Accuracy : 0.9884          
+##                  95% CI : (0.9883, 0.9885)
+##     No Information Rate : 0.9981          
+##     P-Value [Acc > NIR] : 1               
+##                                           
+##                   Kappa : 0.1575          
+##                                           
+##  Mcnemar's Test P-Value : <2e-16          
+##                                           
+##             Sensitivity : 0.590800        
+##             Specificity : 0.989153        
+##          Pos Pred Value : 0.092674        
+##          Neg Pred Value : 0.999225        
+##              Prevalence : 0.001872        
+##          Detection Rate : 0.001106        
+##    Detection Prevalence : 0.011932        
+##       Balanced Accuracy : 0.789977        
+##                                           
+##        'Positive' Class : 1    
 
 # Conclusion: Enlarging the minor target class make the results worst.
 
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  2926822 156.4   15528524  829.4  22293634 1190.7
+## Vcells 95987904 732.4  427841524 3264.2 504117631 3846.2
 ```
 
 #### Balancing the target class
@@ -1911,6 +1973,8 @@ train_set1 <- train_set %>%
 
 train_set1 <- SMOTE(is_attributed ~ ., data  = train_set1)
 table(train_set1$is_attributed) 
+##   0   1 
+## 908 681 
 
 # Random forest model
 model15 <- randomForest(is_attributed ~ repetitions_fac * app + 
@@ -1925,12 +1989,42 @@ predictions15 <- predict(model15, test_set, type="class")
 # Evaluation
 confusionMatrix(predictions15, 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction       0       1
+##          0 9825959    4916
+##          1  155324   13801
+##                                           
+##                Accuracy : 0.984           
+##                  95% CI : (0.9839, 0.9841)
+##     No Information Rate : 0.9981          
+##     P-Value [Acc > NIR] : 1               
+##                                           
+##                   Kappa : 0.1441          
+##                                           
+##  Mcnemar's Test P-Value : <2e-16          
+##                                           
+##             Sensitivity : 0.737351        
+##             Specificity : 0.984438        
+##          Pos Pred Value : 0.081602        
+##          Neg Pred Value : 0.999500        
+##              Prevalence : 0.001872        
+##          Detection Rate : 0.001380        
+##    Detection Prevalence : 0.016913        
+##       Balanced Accuracy : 0.860895        
+##                                           
+##        'Positive' Class : 1  
 
 # Conclusion: Balancing the data with SMOTE improved slightly the results.
 
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  3058468 163.4   15074316  805.1  22293634 1190.7
+## Vcells 96216808 734.1  410791863 3134.1 508565428 3880.1
+
 detach(package:DMwR)
 ```
 
@@ -1943,6 +2037,8 @@ train_set1 <- train_set %>%
 
 train_set1 <- ROSE(is_attributed ~ ., data  = train_set1)$data                       
 table(train_set1$is_attributed) 
+##     0     1 
+## 50277 49723 
 
 # Random forest model
 model15 <- randomForest(is_attributed ~ repetitions_fac * app + 
@@ -1957,12 +2053,41 @@ predictions15 <- predict(model15, test_set, type="class")
 # Evaluation
 confusionMatrix(predictions15, 
                 reference = test_set$is_attributed, positive = '1')
+## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction       0       1
+##          0 9934958    9432
+##          1   46325    9285
+##                                           
+##                Accuracy : 0.9944          
+##                  95% CI : (0.9944, 0.9945)
+##     No Information Rate : 0.9981          
+##     P-Value [Acc > NIR] : 1               
+##                                           
+##                   Kappa : 0.2477          
+##                                           
+##  Mcnemar's Test P-Value : <2e-16          
+##                                           
+##             Sensitivity : 0.4960731       
+##             Specificity : 0.9953588       
+##          Pos Pred Value : 0.1669664       
+##          Neg Pred Value : 0.9990515       
+##              Prevalence : 0.0018717       
+##          Detection Rate : 0.0009285       
+##    Detection Prevalence : 0.0055610       
+##       Balanced Accuracy : 0.7457160       
+##                                           
+##        'Positive' Class : 1     
 
 # Conclusion: This worse the results.
 
 # Cleaning the house
 rm(list = setdiff(ls(), c('train_set', 'test_set')))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  3061960 163.6   17950200  958.7  22293634 1190.7
+## Vcells 96224268 734.2  474026205 3616.6 508565428 3880.1
 ```
 
 #### Continue on part two, filename project_click_fraud_2_3_4_markdown_final_model.pdf
