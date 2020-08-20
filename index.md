@@ -70,7 +70,7 @@ train_set <- read.csv(file = 'train_sample.csv', header = T)
 # https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/data
 test_set <- fread(file = 'train.csv', header = T, nrows = 1e7)
 ```
-## PART ONE
+## PART TWO
 
 This script got the main tidying lines of part one to tidy the full 
 training dataset, nominated train.csv.
@@ -91,7 +91,9 @@ library(DMwR)
 ```
 
 Number of rows in the train dataset
+
 The train dataset named train.csv can be found on the web site
+
 https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/data
 ``` r
 n_rows <- fread(file = 'train.csv', header = T, select = 'is_attributed')
@@ -110,7 +112,7 @@ for (i in c(15:100)) {
     print(c(i, n_rows/i))
   }
 }             # 15 seems better for my computer capacity
-## [1]       15 12326926
+## [1]      15 12326926
 ## [1]      30 6163463
 ## [1]      73 2532930
 
@@ -178,9 +180,30 @@ for (i in c(0:(n-1))) {
   gc()
   print(i)
 }
+## [1] 0
+## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10
+## [1] 11
+## [1] 12
+## [1] 13
+## [1] 14
 
+# training data set dimension
 dim(train_set)
+## [1] 3197922  5
+
+# Number of downloads, indicated by "1"
 table(train_set$is_attributed) 
+##        1       0
+##  1370538 1827384
 ```
 
 Saving the tidy train dataset 
