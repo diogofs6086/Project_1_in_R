@@ -97,7 +97,11 @@ https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/data
 n_rows <- fread(file = 'train.csv', header = T, select = 'is_attributed')
 n_rows <- nrow(n_rows)
 n_rows    # 184.903.890 rows
+## [1] 184903890
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  3023909 161.5   14360160  767.0  22293634 1190.7
+## Vcells 20116531 153.5  379220964 2893.3 508565428 3880.1
 ``` r
 Calculating the number of batches
 ``` r
@@ -106,6 +110,10 @@ for (i in c(15:100)) {
     print(c(i, n_rows/i))
   }
 }             # 15 seems better for my computer capacity
+## [1]       15 12326926
+## [1]      30 6163463
+## [1]      73 2532930
+
 rm(i)
 ``` r
 
