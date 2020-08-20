@@ -1795,7 +1795,7 @@ varImpPlot(model)
 <img src="images/var_imp_model15.png">
 
 ``` r
-# Random forest model
+# Random forest model 
 model15 <- randomForest(is_attributed ~ repetitions_fac * app + 
                           channel * app_fac, 
                 data = train_set1, 
