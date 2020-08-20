@@ -23,6 +23,7 @@ Number of rows in the train dataset
 The train dataset named train.csv can be found on the web site
 
 https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/data
+
 ``` r
 n_rows <- fread(file = 'train.csv', header = T, select = 'is_attributed')
 n_rows <- nrow(n_rows)
@@ -56,7 +57,9 @@ train_set <- data.frame(is_attributed = c(),
                         repetitions_fac = c(),
                         app_fac = c())
 ```
+
 The training dataset transformation
+
 ``` r
 for (i in c(0:(n-1))) {
   if (i == 0) {
@@ -135,6 +138,7 @@ table(train_set$is_attributed)
 ```
 
 Saving the tidy train dataset 
+
 ``` r
 write.csv(x = train_set, file = 'train_set.csv')
 ```
