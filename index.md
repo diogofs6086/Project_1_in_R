@@ -137,6 +137,6 @@ table(train_set$is_attributed)
 Saving the tidy train dataset 
 ``` r
 write.csv(x = train_set, file = 'train_set.csv')
-``` r
+```
 
 #### Continue on part three, filename project_click_fraud_3_predictions_with_the_test_dataset.R
