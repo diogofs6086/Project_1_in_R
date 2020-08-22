@@ -87,36 +87,63 @@ test_set$app_fac <- cut(test_set$app,
                         breaks = c(0, 3, 12, 18, nrow(test_set)),
                         right = F, labels = c(1, 2, 3, 4))
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  5566151 297.3   13128697  701.2  13128697  701.2
+## Vcells 99736171 761.0  547515494 4177.3 680144856 5189.1
 ``` 
 
+Predictions of the machine learning model
 ``` r
 # Predictions using the model 15s
 predictions15 <- predict(model15s, test_set, type = "prob")
 head(predictions15)
+##   1 0
+## 1 0 1
+## 2 0 1
+## 3 0 1
+## 4 0 1
+## 5 0 1
+## 6 0 1
 ```
 
+The submission file with the calculated probabilities 
 ``` r
-# The submission file with the calculated probabilities 
 # for the is_attributed variable
 test_set_results <- data.frame(click_id = test_set$click_id, 
                                is_attributed = predictions15[,1])
+                               
 head(test_set_results)
+##   click_id is_attributed
+## 1        0             0
+## 2        1             0
+## 3        2             0
+## 4        3             0
+## 5        4             0
+## 6        5             0
+
 dim(test_set_results)
+## [1] 18790469     2
 ``` 
 
+Saving the submission file
 ``` r
-# Saving the submission file
 write.csv(x = test_set_results, file = 'submission_file.csv', row.names = F)
 ```
 
 ``` r
 # Number yes (1) or no (0) is_attributed variable
 table(round(test_set_results[,2]))
+##
+##        0        1
+## 18346343   444126
 ```
 
 ``` r
 # Cleaning the house
 rm(list = ls())
 gc()
+##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
+## Ncells  5684916 303.7   13202667  705.1  13202667  705.1
+## Vcells 39908833 304.5  546488472 4169.4 671447441 5122.8
 ```
 # THE END
