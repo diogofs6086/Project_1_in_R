@@ -1,21 +1,3 @@
-### PART THREE
-
-In this script, the tidying training dataset was taken with the best model 
-acquired in part one to train the model, but the number of the trees of the 
-random forest model was reduced due to my notebook capacity.
-
-The test dataset is similar to the training dataset, with the following 
-differences:
-click_id: reference for making predictions
-is_attributed: not included
-
-``` r
-# Removes all existing objects and packages from the current workspace
-rm(list = ls())
-# Working directory 
-# setwd("~/project1")
-# getwd()
-```
 ### PART FOUR
 
 In this script, the trained model was applied to the provided test dataset, 
