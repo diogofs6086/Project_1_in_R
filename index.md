@@ -27,6 +27,8 @@ differences:
 * click_id: reference for making predictions
 * s_attributed: not included
 
+
+
 ``` r
 # Removes all existing objects and packages from the current workspace
 rm(list = ls())
@@ -46,6 +48,7 @@ library(randomForest)
 # Loading the model
 model15s <- readRDS("model15.rds")
 ``` 
+
 
 Loading the test file
 
@@ -92,6 +95,7 @@ gc()
 ## Vcells 99736171 761.0  547515494 4177.3 680144856 5189.1
 ``` 
 
+
 Predictions of the machine learning model
 ``` r
 # Predictions using the model 15s
@@ -105,6 +109,7 @@ head(predictions15)
 ## 5 0 1
 ## 6 0 1
 ```
+
 
 The submission file with the calculated probabilities 
 ``` r
@@ -124,6 +129,7 @@ head(test_set_results)
 dim(test_set_results)
 ## [1] 18790469     2
 ``` 
+
 
 Saving the submission file
 ``` r
@@ -146,4 +152,5 @@ gc()
 ## Ncells  5684916 303.7   13202667  705.1  13202667  705.1
 ## Vcells 39908833 304.5  546488472 4169.4 671447441 5122.8
 ```
+
 # THE END
