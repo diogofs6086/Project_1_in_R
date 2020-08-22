@@ -41,3 +41,6 @@ matched with the click_id to produce the submission file.
 
 A script parts are below:
 * [Part 1 - Data munging and testing models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md)
+* [Part 2 - Tidying the training dataset](source_githubio/project_click_fraud_2_tidying_in_the_train_dataset.md)
+* [Part 3 - Trainig the choosen model](source_githubio/project_click_fraud_3_training_the_model.md)
+* [Part 4 - Predictions](source_githubio/project_click_fraud_4_predictions_with_the_test_dataset.md)
