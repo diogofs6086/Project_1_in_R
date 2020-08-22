@@ -1,138 +1,43 @@
-### PART FOUR
 
-In this script, the trained model was applied to the provided test dataset, 
-test.csv. Afterward, the predicted results were matched with the click_id 
-to produce the submission file.
+# Predictions whether a user will download an app after clicking a mobile app advertisement in R
+<center> <h3>Diogo F. dos Santos</h3> </center>
+<center><h4>August 9th, 2020</h4></center>
 
-The test dataset is similar to the training dataset, with the following 
-differences:
-* click_id: reference for making predictions
-* s_attributed: not included
+## PART ONE
 
+### Data fields
 
+Each row of the training data contains a click record, with the following features:
 
-``` r
-# Removes all existing objects and packages from the current workspace
-rm(list = ls())
-# Working directory 
-# setwd("~/project1")
-# getwd()
-```
+* ip: ip address of click.
+* app: app id for marketing.
+* device: device type id of user mobile phone (e.g., iphone 6 plus, iphone 7, huawei mate 7, etc.)
+* os: os version id of user mobile phone
+* channel: channel id of mobile ad publisher
+* click_time: timestamp of click (UTC)
+* attributed_time: if user download the app for after clicking an ad, this is the time of the app download
+* is_attributed: the target that is to be predicted, indicating the app was downloaded
+Note that ip, app, device, os, and channel are encoded.
 
-``` r
-# Packages
-library(dplyr)
-library(data.table)
-library(randomForest)
-```
+Problem: Predict the is_attributed features
 
-``` r
-# Loading the model
-model15s <- readRDS("model15.rds")
-``` 
+Data set site: https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/data
 
+Language: R
 
-Loading the test file
+The solution to this problem was divided into four parts. The first part is 
+in this script. It deals with the data munging and the testing of many machine 
+learning models using the train_sample.csv file and testing with 1E+07 rows of 
+the train.csv. The data of this file was used as the test dataset because the 
+dataset provided did not have the target variable.
 
-The test dataset named test.csv can be found on the web site
+The second part of the solution got the main tidying lines of part one to tidy 
+the full training dataset, nominated train.csv. In the third part, the tidying 
+training dataset was taken with the best model acquired in part one to train 
+the model, but the number of the trees of the random forest model was reduced 
+due to my notebook capacity. In the fourth part, the trained model was applied 
+to the provided test dataset, test.csv. Afterward, the predicted results were 
+matched with the click_id to produce the submission file.
 
-https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/data
-
-``` r
-test_set <- fread(file = 'test.csv', header = T, 
-                  select = c('click_id', 'ip', 'app', 'channel'))
-```
-
-``` r
-# ip feature
-# Repeated ips in order
-n_dupl_ips <- test_set %>%
-  count(ip, wt = n(), name = 'repetitions') %>%
-  arrange(desc(repetitions))
-``` 
-
-``` r
-# Number of duplicate ips column
-test_set <- left_join(test_set, n_dupl_ips, by = 'ip')
-test_set$ip <- NULL
-rm(n_dupl_ips)
-```
-
-``` r
-# repetitions classes
-test_set$repetitions_fac <- cut(test_set$repetitions,
-                                breaks = c(0,5,nrow(test_set)), 
-                                labels = c(1, 2))
-test_set$repetitions <- NULL
-``` 
-
-``` r
-# app classes
-test_set$app_fac <- cut(test_set$app,
-                        breaks = c(0, 3, 12, 18, nrow(test_set)),
-                        right = F, labels = c(1, 2, 3, 4))
-gc()
-##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
-## Ncells  5566151 297.3   13128697  701.2  13128697  701.2
-## Vcells 99736171 761.0  547515494 4177.3 680144856 5189.1
-``` 
-
-
-Predictions of the machine learning model
-``` r
-# Predictions using the model 15s
-predictions15 <- predict(model15s, test_set, type = "prob")
-head(predictions15)
-##   1 0
-## 1 0 1
-## 2 0 1
-## 3 0 1
-## 4 0 1
-## 5 0 1
-## 6 0 1
-```
-
-
-The submission file with the calculated probabilities 
-``` r
-# for the is_attributed variable
-test_set_results <- data.frame(click_id = test_set$click_id, 
-                               is_attributed = predictions15[,1])
-                               
-head(test_set_results)
-##   click_id is_attributed
-## 1        0             0
-## 2        1             0
-## 3        2             0
-## 4        3             0
-## 5        4             0
-## 6        5             0
-
-dim(test_set_results)
-## [1] 18790469     2
-``` 
-
-
-Saving the submission file
-``` r
-write.csv(x = test_set_results, file = 'submission_file.csv', row.names = F)
-```
-
-``` r
-# Number yes (1) or no (0) is_attributed variable
-table(round(test_set_results[,2]))
-##
-##        0        1
-## 18346343   444126
-```
-
-``` r
-# Cleaning the house
-rm(list = ls())
-gc()
-##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
-## Ncells  5684916 303.7   13202667  705.1  13202667  705.1
-## Vcells 39908833 304.5  546488472 4169.4 671447441 5122.8
-```
-
-# THE END
+A script parts are below:
+* [Part 1 - Data munging and testing models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md)
