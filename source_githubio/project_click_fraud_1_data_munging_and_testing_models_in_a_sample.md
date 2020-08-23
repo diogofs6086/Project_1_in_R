@@ -5,7 +5,6 @@
 
 ## PART ONE
 
-## Foo
 ### Data fields
 
 Each row of the training data contains a click record, with the following features:
@@ -1848,7 +1847,7 @@ gc()
 ## Vcells 95960667 732.2  393467817 3002.0 488306060 3725.5
 ```
 
-#### Random forest model balanced by reduction
+#### Random forest model balanced by reducing the major target class
 
 ``` r
 # Random forest model with the balanced target variable by reducing the quantity of not downloaded class
@@ -1909,10 +1908,10 @@ gc()
 ## Vcells 95987904 732.4  309323325 2360.0 488306060 3725.5
 ```
 
-#### Random forest model balanced by increasing minor target class
+#### Random forest model balanced by increasing minor the target class
 
 ``` r
-# Random forest model with the balanced target variable by increasing minor target class
+# Random forest model with the balanced target variable by increasing the minor target class
 train_set1 <- upSample(x = train_set %>% select(-is_attributed),
                          y = train_set$is_attributed, yname = 'is_attributed')
 table(train_set1$is_attributed) 
@@ -1969,9 +1968,10 @@ gc()
 ## Vcells 95987904 732.4  427841524 3264.2 504117631 3846.2
 ```
 
-#### Random forest model with the balanced target variable by SMOTE
+#### Random forest model balanced by SMOTE
 
 ``` r
+# Random forest model with the balanced target variable by SMOTE
 library(DMwR)
 train_set1 <- train_set %>% 
   select(is_attributed, repetitions_fac, app, channel, app_fac)
@@ -2033,9 +2033,10 @@ gc()
 detach(package:DMwR)
 ```
 
-#### Random forest model with the balanced target variable by ROSE
+#### Random forest model balanced by ROSE
 
 ``` r
+# Random forest model with the balanced target variable by ROSE
 library(ROSE)
 train_set1 <- train_set %>% 
   select(is_attributed, repetitions_fac, app, channel, app_fac)
