@@ -61,6 +61,8 @@ A script parts are below:
     * [Model 14 - Another Regression Trees model with the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Another-Regression-Trees-model-with-the-most-significant-variables)
     * [Model 15 - Random Forest model](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-Forest-model)
     * [Model 15 - Random forest model with the balanced target variable by reducing the quantity of not downloaded class](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-with-the-balanced-target-variable-by-reducing-the-quantity-of-not-downloaded-class)
+    
+    * [Model 15 - Random forest model balanced by reduction](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-balanced-by-reduction)
     * [Model 15 - Random forest model with the balanced target variable by increasing minor target class](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-with-the-balanced-target-variable-by-increasing-minor-target-class)
     * [Model 15 - Random forest model with the balanced target variable by SMOTE](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-with-the-balanced-target-variable-by-SMOTE)
     * [Model 15 - Random forest model with the balanced target variable by ROSE](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-with-the-balanced-target-variable-by-ROSE)
