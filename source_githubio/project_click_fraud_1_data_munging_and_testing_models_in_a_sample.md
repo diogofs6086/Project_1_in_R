@@ -1595,10 +1595,10 @@ gc()
 ## Ncells  2926389 156.3   14785270  789.7  17506251  935.0
 ## Vcells 95629924 729.6  292904176 2234.7 600626893 4582.5
 ```
-
-#### Evaluation of the most important features for the model
+#### Regression Trees model with the most significant variables
 
 ``` r
+# Evaluation of the most important features for the model
 model12 <- train(is_attributed ~ repetitions + app_fac + 
                    device_fac + os_fac + channel_fac, 
                  data = train_set1,
@@ -1618,11 +1618,10 @@ varImp(model12)
 ## os_fac2        0.000
 ## os_fac3        0.000
 ## channel_fac2   0.000
-```
-
-#### Regression Trees model with the most significant variables
+``
 
 ``` r
+# Regression Trees model with the most significant variables
 model12 <- rpart(is_attributed ~ repetitions + app_fac + 
                    device_fac + channel_fac, 
                  data = train_set1)
@@ -1849,9 +1848,10 @@ gc()
 ## Vcells 95960667 732.2  393467817 3002.0 488306060 3725.5
 ```
 
-#### Reducing the quantity of not downloaded to balance the train target feature
+#### Random forest model balanced by reduction
 
 ``` r
+# Random forest model with the balanced target variable by reducing the quantity of not downloaded class
 train_set1 <- downSample(x = train_set %>% select(-is_attributed),
                          y = train_set$is_attributed, yname = 'is_attributed')
 table(train_set1$is_attributed) 
@@ -1909,7 +1909,7 @@ gc()
 ## Vcells 95987904 732.4  309323325 2360.0 488306060 3725.5
 ```
 
-#### Increasing minor target class
+#### Random forest model with the balanced target variable by increasing minor target class
 
 ``` r
 train_set1 <- upSample(x = train_set %>% select(-is_attributed),
@@ -1968,7 +1968,7 @@ gc()
 ## Vcells 95987904 732.4  427841524 3264.2 504117631 3846.2
 ```
 
-#### Balancing the target class
+#### Random forest model with the balanced target variable by SMOTE
 
 ``` r
 library(DMwR)
@@ -2032,7 +2032,7 @@ gc()
 detach(package:DMwR)
 ```
 
-#### Balancing the target class
+#### Random forest model with the balanced target variable by ROSE
 
 ``` r
 library(ROSE)
@@ -2043,11 +2043,8 @@ train_set1 <- ROSE(is_attributed ~ ., data  = train_set1)$data
 table(train_set1$is_attributed) 
 ##     0     1 
 ## 50277 49723 
-```
 
-#### Random forest model
-
-``` r
+# Random forest model
 model15 <- randomForest(is_attributed ~ repetitions_fac * app + 
                           channel * app_fac, 
                         data = train_set1, 
