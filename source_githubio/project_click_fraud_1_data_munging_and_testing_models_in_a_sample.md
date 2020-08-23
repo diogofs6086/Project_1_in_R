@@ -1908,7 +1908,7 @@ gc()
 ## Vcells 95987904 732.4  309323325 2360.0 488306060 3725.5
 ```
 
-#### Random forest model balanced by increasing minor the target class
+#### Random forest model balanced by increasing the minor target class
 
 ``` r
 # Random forest model with the balanced target variable by increasing the minor target class
