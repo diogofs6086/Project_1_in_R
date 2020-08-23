@@ -56,7 +56,6 @@ A script parts are below:
     * [Model 9  - SVM model with linear kernel](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#SVM-model-with-linear-kernel)
     * [Model 10 - SVM model with linear kernel and the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#SVM-model-with-linear-kernel-and-the-most-significant-variables)
     * [Model 11 - Regression Trees model](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Regression-Trees-model)
-    * [Evaluation of the most important features for the model](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Evaluation-of-the-most-important-features-for-the-model)
     * [Model 12 - Regression Trees model with the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Regression-Trees-model-with-the-most-significant-variables)
     * [Model 13 - Another Regression Trees model](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Another-Regression-Trees-model)
     * [Model 14 - Another Regression Trees model with the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Another-Regression-Trees-model-with-the-most-significant-variables)
