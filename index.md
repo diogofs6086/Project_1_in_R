@@ -42,7 +42,7 @@ matched with the click_id to produce the submission file.
 A script parts are below:
 * [Part 1 - Data munging and testing models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md)
 
-[Custom foo description](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Data fields)
+[Custom foo description](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Foo)
 
 
 
