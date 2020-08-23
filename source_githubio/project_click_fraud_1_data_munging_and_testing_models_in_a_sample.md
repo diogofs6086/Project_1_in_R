@@ -4,7 +4,7 @@
 <center><h4>August 9th, 2020</h4></center>
 
 ## PART ONE
-[ssssssssssXXXXXXXXXXXXXXXXX](Project_click_fraud_1_web.md)
+[just](#like-this-one)
 ### Data fields
 
 Each row of the training data contains a click record, with the following features:
