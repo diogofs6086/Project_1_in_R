@@ -42,7 +42,31 @@ matched with the click_id to produce the submission file.
 A script parts are below:
 * [Part 1 - Data munging and testing models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md)
   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Data-fields)
-  * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Data-fields)
+  * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Exploratory-data-analysis)
+  * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Models)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Logistic-regression-model)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Logistic-regression-model-with-the-most-significant-variables)
+   
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#KSVM-model-with-rbf-kernel)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#KSVM-model-with-rbf-kernel-and-the-most-significant-variables)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#KSVM-model-with-vanilladot-Linear-kernel)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#KSVM-model-with-vanilladot-Linear-kernel-and-the-most-significant-variables)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#SVM-model-with-radial-kernel)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#SVM-model-with-radial-kernel-and-the-most-significant-variables)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#SVM-model-with-linear-kernel)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#SVM-model-with-linear-kernel-and-the-most-significant-variables)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Regression-Trees-model)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Evaluation-of-the-most-important-features-for-the-model)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Another-Regression-Trees-model)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Another-Regression-Trees-model-with-the-most-significant-variables)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-Forest-model)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Reducing-the-quantity-of-not-downloaded-to-balance-the-train-target-feature)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Increasing-minor-target-class)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Balancing-the-target-class)
+   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Balancing-the-target-class)
+  
 * [Part 2 - Tidying the training dataset](source_githubio/project_click_fraud_2_tidying_in_the_train_dataset.md)
+
 * [Part 3 - Trainig the choosen model](source_githubio/project_click_fraud_3_training_the_model.md)
+
 * [Part 4 - Predictions](source_githubio/project_click_fraud_4_predictions_with_the_test_dataset.md)
