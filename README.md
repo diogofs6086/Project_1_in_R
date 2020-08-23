@@ -3,31 +3,7 @@
 The objective of this project is to predict whether a user will download an app after clicking a mobile app advertisement. The datasets are from Kaggle, https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/data. This project is part of the Data Science course formation of Data Science Academy from Brazil.
 
 
-# Predictions whether a user will download an app after clicking a mobile app advertisement in R
-<center> <h3>Diogo F. dos Santos</h3> </center>
-<center><h4>August 9th, 2020</h4></center>
-
-## PART ONE
-
-### Data fields
-
-Each row of the training data contains a click record, with the following features:
-
-* ip: ip address of click.
-* app: app id for marketing.
-* device: device type id of user mobile phone (e.g., iphone 6 plus, iphone 7, huawei mate 7, etc.)
-* os: os version id of user mobile phone
-* channel: channel id of mobile ad publisher
-* click_time: timestamp of click (UTC)
-* attributed_time: if user download the app for after clicking an ad, this is the time of the app download
-* is_attributed: the target that is to be predicted, indicating the app was downloaded
-Note that ip, app, device, os, and channel are encoded.
-
-Problem: Predict the is_attributed features
-
-Data set site: https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/data
-
-Language: R
+## Pipeline of the given solution
 
 The solution to this problem was divided into four parts. The first part is 
 in this script. It deals with the data munging and the testing of many machine 
