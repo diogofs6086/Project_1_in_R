@@ -2045,7 +2045,7 @@ table(train_set1$is_attributed)
 ## 50277 49723 
 ```
 
-#### andom forest model
+#### Random forest model
 
 ``` r
 model15 <- randomForest(is_attributed ~ repetitions_fac * app + 
