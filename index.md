@@ -60,10 +60,10 @@ A script parts are below:
     * [Model 13 - Another Regression Trees model](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Another-Regression-Trees-model)
     * [Model 14 - Another Regression Trees model with the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Another-Regression-Trees-model-with-the-most-significant-variables)
     * [Model 15 - Random Forest model](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-Forest-model)
-    * [Model 15 - Random forest model balanced by reduction](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-balanced-by-reduction)
-    * [Model 15 - Random forest model balanced by increasing minor target class](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-balanced-by-increasing-minor-target-class)
-    * [Model 15 - Random forest model with the balanced target variable by SMOTE](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-with-the-balanced-target-variable-by-SMOTE)
-    * [Model 15 - Random forest model with the balanced target variable by ROSE](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-with-the-balanced-target-variable-by-ROSE)
+    * [Model 15 - Random forest model balanced by reducing the major target class](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-balanced-by-reducing-the-major-target-class)
+    * [Model 15 - Random forest model balanced by increasing the minor target class](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-balanced-by-increasing-the-minor-target-class)
+    * [Model 15 - Random forest model balanced by SMOTE](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-balanced-by-SMOTE)
+    * [Model 15 - Random forest model balanced by ROSE](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-balanced-by-ROSE)
   
 * [Part 2 - Tidying the training dataset](source_githubio/project_click_fraud_2_tidying_in_the_train_dataset.md)
 
