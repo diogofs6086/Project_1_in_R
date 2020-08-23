@@ -5,7 +5,7 @@
 
 ## PART ONE
 
-# Foo
+## Foo
 ### Data fields
 
 Each row of the training data contains a click record, with the following features:
