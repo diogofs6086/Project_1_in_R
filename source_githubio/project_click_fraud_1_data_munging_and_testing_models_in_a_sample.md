@@ -4,9 +4,6 @@
 <center><h4>August 9th, 2020</h4></center>
 
 ## PART ONE
-[just](#like-this-one)
-
-[Custom foo description](#foo)
 
 # Foo
 ### Data fields
