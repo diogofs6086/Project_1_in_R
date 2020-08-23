@@ -1618,8 +1618,11 @@ varImp(model12)
 ## os_fac2        0.000
 ## os_fac3        0.000
 ## channel_fac2   0.000
+```
 
-# Regression Trees model with the most significant variables
+#### Regression Trees model with the most significant variables
+
+``` r
 model12 <- rpart(is_attributed ~ repetitions + app_fac + 
                    device_fac + channel_fac, 
                  data = train_set1)
@@ -2040,8 +2043,11 @@ train_set1 <- ROSE(is_attributed ~ ., data  = train_set1)$data
 table(train_set1$is_attributed) 
 ##     0     1 
 ## 50277 49723 
+```
 
-# Random forest model
+#### andom forest model
+
+``` r
 model15 <- randomForest(is_attributed ~ repetitions_fac * app + 
                           channel * app_fac, 
                         data = train_set1, 
