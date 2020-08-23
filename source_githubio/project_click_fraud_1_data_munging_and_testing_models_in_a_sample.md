@@ -1909,9 +1909,10 @@ gc()
 ## Vcells 95987904 732.4  309323325 2360.0 488306060 3725.5
 ```
 
-#### Random forest model with the balanced target variable by increasing minor target class
+#### Random forest model balanced by increasing minor target class
 
 ``` r
+# Random forest model with the balanced target variable by increasing minor target class
 train_set1 <- upSample(x = train_set %>% select(-is_attributed),
                          y = train_set$is_attributed, yname = 'is_attributed')
 table(train_set1$is_attributed) 
