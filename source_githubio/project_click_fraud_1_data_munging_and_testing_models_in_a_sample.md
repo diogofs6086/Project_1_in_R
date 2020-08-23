@@ -5,6 +5,9 @@
 
 ## PART ONE
 [just](#like-this-one)
+[Custom foo description](#foo)
+
+# Foo
 ### Data fields
 
 Each row of the training data contains a click record, with the following features:
