@@ -64,7 +64,7 @@ A script parts are below:
     * [Random forest model with the balanced target variable by reducing the quantity of not downloaded class](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-with-the-balanced-target-variable-by-reducing-the-quantity-of-not-downloaded-class)
     * [Random forest model with the balanced target variable by increasing minor target class](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-with-the-balanced-target-variable-by-increasing-minor-target-class)
     * [Random forest model with the balanced target variable by SMOTE](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-with-the-balanced-target-variable-by-SMOTE)
-    * [Random forest model with the balanced target variable by ROSE]
+    * [Random forest model with the balanced target variable by ROSE](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-with-the-balanced-target-variable-by-ROSE)
   
 * [Part 2 - Tidying the training dataset](source_githubio/project_click_fraud_2_tidying_in_the_train_dataset.md)
 
