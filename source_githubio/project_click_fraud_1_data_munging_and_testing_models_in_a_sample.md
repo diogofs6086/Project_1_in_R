@@ -334,7 +334,7 @@ df_prop
 ## 22          10  2649   99.96   1     0.04
 ## 23           6  4913   99.98   1     0.02
 ```
-#### Scatter plot of the yes/no downloading app depending on the repeated ips
+#### Scatter plot of the yes or no downloading app depending on the repeated ips
 ``` r
 brks <- cut(df_prop$repetitions, breaks = c(0, 5, 10, 100, 700))
 ggplot(data = df_prop) +
