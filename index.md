@@ -43,7 +43,7 @@ A script parts are below:
 * [Part 1 - Data munging and testing models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md)
   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Data-fields)
   * [Exploratory data analysis](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Exploratory-data-analysis)
-    * [Scatter plot of the yes/no downloading app depending on the repeated ips](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Scatter-plot-of-the-yes-or-no-downloading-app-depending-on-the-repeated-ips)
+    * [Scatter plot of the yes or no downloading app depending on the repeated ips](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Scatter-plot-of-the-yes-or-no-downloading-app-depending-on-the-repeated-ips)
   * [Models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Models)
     * [Model 1 - Logistic regression model](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Logistic-regression-model)
     * [Model 2 - Logistic regression model with the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Logistic-regression-model-with-the-most-significant-variables)
@@ -66,8 +66,11 @@ A script parts are below:
     * [Model 15 - Random forest model balanced by SMOTE](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-balanced-by-SMOTE)
     * [Model 15 - Random forest model balanced by ROSE](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Random-forest-model-balanced-by-ROSE)
   
+  
 * [Part 2 - Tidying the training dataset](source_githubio/project_click_fraud_2_tidying_in_the_train_dataset.md)
 
+
 * [Part 3 - Trainig the choosen model](source_githubio/project_click_fraud_3_training_the_model.md)
+
 
 * [Part 4 - Predictions](source_githubio/project_click_fraud_4_predictions_with_the_test_dataset.md)
