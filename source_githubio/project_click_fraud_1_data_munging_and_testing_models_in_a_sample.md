@@ -282,8 +282,11 @@ names(test_set)[9] <- 'repetitions'
 labels(test_set)[[2]]
 ## [1] "ip"              "app"             "device"          "os"              "channel"        
 ## [6] "click_time"      "attributed_time" "is_attributed"   "repetitions"  
+```
 
-# The number of ips repeated depending on the number of repetitions
+### Ips analysis
+``` r
+### The number of ips repeated depending on the number of repetitions
 c = 1
 values <- unique(n_dupl_ips_train$n)
 df <- data.frame(repetitions = rep(NA, length(values)))
@@ -333,8 +336,9 @@ df_prop
 ## 22          10  2649   99.96   1     0.04
 ## 23           6  4913   99.98   1     0.02
 ```
-#### Scatter plot of the yes or no downloading app depending on the repeated ips
+
 ``` r
+# Scatter plots of the yes or no downloading app depending on the repeated ips
 brks <- cut(df_prop$repetitions, breaks = c(0, 5, 10, 100, 700))
 ggplot(data = df_prop) +
   geom_point(aes(no/1000, yes, color = brks,
@@ -349,9 +353,8 @@ ggplot(data = df_prop) +
 
 <img src="images/df_prop1.png">
 
-
-### Scatter plots of the yes/no downloading app and the number of ips repetitions 
 ``` r
+# Scatter plot of the yes/no downloading app and the number of ips repetitions 
 ggplot(data = df_prop) +
   geom_point(aes(repetitions, yes_prop, size = yes_prop), alpha = 0.8) +
   scale_color_manual(values = c(1,3,2,4)) +
@@ -383,9 +386,10 @@ train_set$repetitions_fac <- cut(train_set$repetitions,
 test_set$repetitions_fac <- cut(test_set$repetitions, 
                                  breaks = c(0,5,nrow(test_set)), 
                                  labels = c(1, 2))
+```
 
-#########  TIME VARIABLE  ##################
-
+### Click features
+``` r
 # The click_time feature of the train data set
 train_set$click_time <- as.Date(train_set$click_time, format = '%Y-%m-%d')
 unique(months(train_set$click_time))      # only in november
@@ -421,8 +425,8 @@ train_set$click_day <- day(train_set$click_time)
 test_set$click_day <- day(test_set$click_time)
 ```
 
-### Train click_day plots
 ``` r
+# Train click_day plots
 ggplot(train_set, aes(click_day)) +
   geom_histogram(binwidth = 1, fill = 'green', col = 'black', alpha = 0.6) +
   theme_bw()
@@ -440,7 +444,10 @@ train_set %>%
 ## 2         7 32393
 ## 3         8 34035
 ## 4         9 28561
+```
 
+### Attributed time features
+``` r
 # The train attributed_time feature. It is not in the test data set.
 train_set$attributed_time <- ymd_hms(train_set$attributed_time)
 
@@ -484,8 +491,8 @@ train_set %>%
 # dim(train_set)
 ```
 
-### Hour of the day that the app was downloaded
 ``` r
+# Hour of the day that the app was downloaded
 hist(train_set$attributed_hour[train_set$attributed_day == 7], 
      col = rgb(1,0,0,0.5), breaks = 24,
      main = 'Histogram of the app downloaded per hour', xlab = 'Hour')
@@ -506,7 +513,7 @@ hist(train_set$attributed_hour,
 <img src="images/attr_hour2.png">
 
 
-### App id classes
+### App id feature
 ``` r
 # app feature
 sort(unique(train_set$app))
