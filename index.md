@@ -40,7 +40,7 @@ to the provided test dataset, test.csv. Afterward, the predicted results were
 matched with the click_id to produce the submission file.
 
 A script parts are below:
-* [Part 1 - Data munging and testing models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md)
+* [Part 1 - Data munging and testing models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#PART-ONE)
   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Data-fields)
   * [Exploratory data analysis](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Exploratory-data-analysis)
     * [Scatter plot of the yes or no downloading app depending on the repeated ips](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Scatter-plot-of-the-yes-or-no-downloading-app-depending-on-the-repeated-ips)
