@@ -29,6 +29,7 @@ A script parts are below:
   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Data-fields)
   * [Exploratory data analysis](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Exploratory-data-analysis)
     * [Scatter plot of the yes or no downloading app depending on the repeated ips](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Scatter-plot-of-the-yes-or-no-downloading-app-depending-on-the-repeated-ips)
+    * [Train click_day plot](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Train-click_day-plot)
   * [Models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Models)
     * [Model 1 - Logistic regression model](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Logistic-regression-model)
     * [Model 2 - Logistic regression model with the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Logistic-regression-model-with-the-most-significant-variables)
