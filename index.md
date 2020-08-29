@@ -25,7 +25,7 @@ produce the submission file.
 
 A script parts are below:
 
-* [PART 1 - Data munging and testing models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md)
+* [PART 1 - Data munging and testing models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#part-one)
   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#data-fields)
   * [Exploratory data analysis](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#exploratory-data-analysis)
     * [Ips analysis](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#ips-analysis)
