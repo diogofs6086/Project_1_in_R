@@ -29,7 +29,7 @@ A script parts are below:
   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Data-fields)
   * [Exploratory data analysis](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Exploratory-data-analysis)
     * [Ips analysis](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Ips-analysis)
-    * [Click_time feature](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Click_time-feature)
+    * [Click features](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Click-features)
     * [Attributed time features](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Attributed-time-features)
     * [App id feature](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#App-id-feature)
     * [OS feature](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#OS-feature)
