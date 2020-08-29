@@ -33,7 +33,7 @@ A script parts are below:
     * [Attributed time features](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Attributed-time-features)
     * [App id feature](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#App-id-feature)
     * [OS feature](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#OS-feature)
-    * [Channel feature](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Channel-feature)
+    * [Channel feature](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#channel-feature)
     * [Features with missing values](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Features-with-missing-values)
     * [Reducing the quantity of not downloaded to balance the train target feature](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Reducing-the-quantity-of-not-downloaded-to-balance-the-train-target-feature)
   * [Models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Models)
