@@ -33,7 +33,6 @@ A script parts are below:
   * [Models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Models)
     * [Model 1 - Logistic regression model](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Logistic-regression-model)
     * [Model 2 - Logistic regression model with the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Logistic-regression-model-with-the-most-significant-variables)
-   
     * [Model 3  - KSVM model with rbf kernel](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#KSVM-model-with-rbf-kernel)
     * [Model 4  - KSVM model with rbf kernel and the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#KSVM-model-with-rbf-kernel-and-the-most-significant-variables)
     * [Model 5  - KSVM model with vanilladot Linear kernel](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#KSVM-model-with-vanilladot-Linear-kernel)
