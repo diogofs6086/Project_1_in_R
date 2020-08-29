@@ -760,7 +760,7 @@ plot(test_set$os_fac, xlab = 'OS classes (test data set)', ylab = 'Frequency')
 <img src="images/os_fac_test.png">
 
 
-### channel feature
+### Channel feature
 ``` r
 sort(unique(train_set$channel))
 ##   [1]   3   4   5  13  15  17  18  19  21  22  24  30 101 105 107 108 110 111 113 114 115 116 118
