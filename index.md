@@ -24,7 +24,7 @@ produce the submission file.
 
 
 A script parts are below:
-<a href="source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#PART-ONE">link text</a>
+
 * [Part 1 - Data munging and testing models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#PART-ONE)
   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Data-fields)
   * [Exploratory data analysis](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#Exploratory-data-analysis)
