@@ -3,7 +3,6 @@
 <center> <h3>Diogo F. dos Santos</h3> </center>
 <center><h4>August 9th, 2020</h4></center>
 
-## Project 1 in R
 
 The objective of this project is to predict whether a user will download an app after clicking a mobile app advertisement. The datasets are from Kaggle, https://www.kaggle.com/c/talkingdata-adtracking-fraud-detection/data. This project is part of the Data Science course formation of Data Science Academy from Brazil.
 
