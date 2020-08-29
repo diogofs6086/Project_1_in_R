@@ -1,4 +1,3 @@
-
 # Predictions whether a user will download an app after clicking a mobile app advertisement in R
 <center> <h3>Diogo F. dos Santos</h3> </center>
 <center><h4>August 9th, 2020</h4></center>
