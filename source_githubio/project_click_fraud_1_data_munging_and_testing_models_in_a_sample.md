@@ -1,4 +1,3 @@
-
 # Predictions whether a user will download an app after clicking a mobile app advertisement in R
 <center> <h3>Diogo F. dos Santos</h3> </center>
 <center><h4>August 9th, 2020</h4></center>
@@ -506,6 +505,8 @@ hist(train_set$attributed_hour,
 ```
 <img src="images/attr_hour2.png">
 
+
+### App id classes
 ``` r
 # app feature
 sort(unique(train_set$app))
