@@ -42,6 +42,7 @@ A script parts are below:
     * [Model 3  - KSVM model with rbf kernel](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#ksvm-model-with-rbf-kernel)
     * [Model 4  - KSVM model with rbf kernel and the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#ksvm-model-with-rbf-kernel-and-the-most-significant-variables)
     * [Model 5  - KSVM model with vanilladot Linear kernel](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#ksvm-model-with-vanilladot-Linear-kernel)
+    * [Model 5  - KSVM model with vanilladot Linear kernel](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#KSVM-model-with-vanilladot-Linear-kernel)
     * [Model 6  - KSVM model with vanilladot Linear kernel and the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#ksvm-model-with-vanilladot-Linear-kernel-and-the-most-significant-variables)
     * [Model 7  - SVM model with radial kernel](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#svm-model-with-radial-kernel)
     * [Model 8  - SVM model with radial kernel and the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#svm-model-with-radial-kernel-and-the-most-significant-variables)
