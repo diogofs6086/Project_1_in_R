@@ -25,7 +25,7 @@ produce the submission file.
 
 A script parts are below:
 
-* [Part 1 - Data munging and testing models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#part-one)
+* [PART 1 - Data munging and testing models](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#part-one)
   * [Data fields](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#data-fields)
   * [Exploratory data analysis](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#exploratory-data-analysis)
     * [Ips analysis](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#ips-analysis)
@@ -58,10 +58,10 @@ A script parts are below:
     * [Model 15 - Random forest model balanced by ROSE](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#random-forest-model-balanced-by-rose)
   
   
-* [Part 2 - Tidying the training dataset](source_githubio/project_click_fraud_2_tidying_in_the_train_dataset.md/#part-two)
+* [PART 2 - Tidying the training dataset](source_githubio/project_click_fraud_2_tidying_in_the_train_dataset.md/#part-two)
 
 
-* [Part 3 - Trainig the choosen model](source_githubio/project_click_fraud_3_training_the_model.md/#part-three)
+* [PART 3 - Trainig the choosen model](source_githubio/project_click_fraud_3_training_the_model.md/#part-three)
 
 
-* [Part 4 - Predictions](source_githubio/project_click_fraud_4_predictions_with_the_test_dataset.md/#part-four)
+* [PART 4 - Predictions](source_githubio/project_click_fraud_4_predictions_with_the_test_dataset.md/#part-four)
