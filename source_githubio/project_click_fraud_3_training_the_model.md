@@ -1,4 +1,4 @@
-### PART THREE
+## PART THREE
 
 In this script, the tidying training dataset was taken with the best model 
 acquired in part one to train the model, but the number of the trees of the 
