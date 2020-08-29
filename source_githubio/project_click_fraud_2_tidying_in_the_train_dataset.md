@@ -33,7 +33,7 @@ gc()
 ##            used  (Mb) gc trigger   (Mb)  max used   (Mb)
 ## Ncells  3023909 161.5   14360160  767.0  22293634 1190.7
 ## Vcells 20116531 153.5  379220964 2893.3 508565428 3880.1
-``` r
+```
 Calculating the number of batches
 ``` r
 for (i in c(15:100)) {
@@ -46,7 +46,7 @@ for (i in c(15:100)) {
 ## [1]      73 2532930
 
 rm(i)
-``` r
+```
 
 Batches
 ``` r
