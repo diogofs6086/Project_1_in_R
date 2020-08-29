@@ -556,8 +556,9 @@ plot(test_set$app_fac, xlab = 'App id class (test data set)', ylab = 'Frequency'
 ```
 <img src="images/app_fac_test.png">
 
+
+### Device feature
 ``` r
-# device feature
 sort(unique(train_set$device))
 ##  [1]    0    1    2    4    5    6    7    9   11   16   17   18   20   21   25   30   33   36
 ## [19]   37   40   49   50   53   56   58   59   60   67   74   76   78   79   97  100  102  103
@@ -638,8 +639,10 @@ levels(train_set$device_fac)
 test_set$device_fac <- as.factor(class_device(test_set$device))
 levels(test_set$device_fac)
 ## [1] "1" "2"
+```
 
-# OS feature
+### OS feature
+``` r
 sort(unique(train_set$os))
 ##   [1]   0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20  21  22
 ##  [24]  23  24  25  26  27  28  29  30  31  32  34  35  36  37  38  39  40  41  42  43  44  45  46
@@ -749,8 +752,9 @@ plot(test_set$os_fac, xlab = 'OS classes (test data set)', ylab = 'Frequency')
 ```
 <img src="images/os_fac_test.png">
 
+
+### Channel feature
 ``` r
-# Channel feature
 sort(unique(train_set$channel))
 ##   [1]   3   4   5  13  15  17  18  19  21  22  24  30 101 105 107 108 110 111 113 114 115 116 118
 ##  [24] 120 121 122 123 124 125 126 127 128 130 134 135 137 138 140 145 150 153 160 171 173 174 178
@@ -841,6 +845,7 @@ plot(test_set$channel_fac, xlab = 'Channel id class (test data set)',
 ```
 <img src="images/channel_fac_test.png">
 
+### Features with missing values
 ``` r
 # Features that does not contain missing values
 dim(train_set)
@@ -886,8 +891,10 @@ labels(train_set)[[2]][13]
 unique(train_set$attributed_hour)
 ## [1] NA  2  6 12 13 23  9  5 10 20  7  0  4  8 15 11  1 14 17  3 16 22 24 21
                                         # This features will not be utilized
+```
 
-# Reducing the quantity of not downloaded to balance the train target feature
+### Reducing the quantity of not downloaded to balance the train target feature
+``` r
 n <- nrow(train_set[train_set$is_attributed == 1, ])
 n
 ## [1] 227
