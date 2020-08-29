@@ -349,10 +349,10 @@ ggplot(data = df_prop) +
 ```
 
 <img src="images/df_prop1.png">
- 
-  
+
+
+### Scatter plot of the yes/no downloading app and the number of ips repetitions 
 ``` r
-# Scatter plot of the yes/no downloading app and the number of ips repetitions
 ggplot(data = df_prop) +
   geom_point(aes(repetitions, yes_prop, size = yes_prop), alpha = 0.8) +
   scale_color_manual(values = c(1,3,2,4)) +
@@ -422,8 +422,8 @@ train_set$click_day <- day(train_set$click_time)
 test_set$click_day <- day(test_set$click_time)
 ```
 
+### Train click_day plot
 ``` r
-# train click_day plot
 ggplot(train_set, aes(click_day)) +
   geom_histogram(binwidth = 1, fill = 'green', col = 'black', alpha = 0.6) +
   theme_bw()
