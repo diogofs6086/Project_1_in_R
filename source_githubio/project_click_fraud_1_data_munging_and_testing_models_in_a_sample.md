@@ -1555,7 +1555,7 @@ gc()
 detach(package:e1071)
 ```
 
-#### Regression Trees model
+#### Regression Tree model
 
 ``` r
 library(rpart.plot)
@@ -1605,7 +1605,7 @@ gc()
 ## Ncells  2926389 156.3   14785270  789.7  17506251  935.0
 ## Vcells 95629924 729.6  292904176 2234.7 600626893 4582.5
 ```
-#### Regression Trees model with the most significant variables
+#### Regression Tree model with the most significant variables
 
 ``` r
 # Evaluation of the most important features for the model
@@ -1681,7 +1681,7 @@ gc()
 detach(package:rpart.plot)
 ```
 
-#### Another Regression Trees model
+#### Another Regression Tree model
 
 ``` r
 library(C50)
@@ -1735,7 +1735,7 @@ gc()
 ## Vcells 95755664 730.6  324143114 2473.1 600626893 4582.5
 ```
 
-#### Another Regression Trees model with the most significant variables
+#### Another Regression Tree model with the most significant variables
 
 ``` r
 model14 <- C5.0(is_attributed ~ repetitions + app_fac + 
