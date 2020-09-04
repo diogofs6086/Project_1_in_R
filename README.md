@@ -1,4 +1,4 @@
-# Project 1 in the R languange: Predictions whether a user will download an app after clicking a mobile app advertisement in R
+# Project 1 in the R languange: Predictions whether a user will download an app after clicking a mobile app advertisement
 <center> <h3>Diogo F. dos Santos</h3> </center>
 <center><h4>August 9th, 2020</h4></center>
 
@@ -47,7 +47,7 @@ A script parts are below:
     * [Model 8  - SVM model with radial kernel and the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#svm-model-with-radial-kernel-and-the-most-significant-variables)
     * [Model 9  - SVM model with linear kernel](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#svm-model-with-linear-kernel)
     * [Model 10 - SVM model with linear kernel and the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#svm-model-with-linear-kernel-and-the-most-significant-variables)
-    * [Model 11 - Regression Trees model](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#regression-Trees-model)
+    * [Model 11 - Regression Trees model](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#regression-trees-model)
     * [Model 12 - Regression Trees model with the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#regression-trees-model-with-the-most-significant-variables)
     * [Model 13 - Another Regression Trees model](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#another-regression-trees-model)
     * [Model 14 - Another Regression Trees model with the most significant variables](source_githubio/project_click_fraud_1_data_munging_and_testing_models_in_a_sample.md/#another-regression-trees-model-with-the-most-significant-variables)
